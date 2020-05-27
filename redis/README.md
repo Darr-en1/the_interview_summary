@@ -1,9 +1,12 @@
 1.redis数据结构的底层实现
 
-2.基于REDIS实现延时任务
-[https://juejin.im/post/5caf45b96fb9a0688b573d6c](https://juejin.im/post/5caf45b96fb9a0688b573d6c)
+[https://darr-en1.github.io/2020/03/25/1/](https://darr-en1.github.io/2020/03/25/1/)
 
-[https://juejin.im/post/5caf45b96fb9a0688b573d6c]: https://juejin.im/post/5caf45b96fb9a0688b573d6c
+[https://juejin.im/post/5ecc8cfa6fb9a047f6103f8f?utm_source=gold_browser_extension#heading-18](https://juejin.im/post/5ecc8cfa6fb9a047f6103f8f?utm_source=gold_browser_extension#heading-18)
+
+2.基于REDIS实现延时任务
+
+[https://juejin.im/post/5caf45b96fb9a0688b573d6c](https://juejin.im/post/5caf45b96fb9a0688b573d6c)
 
 3.
 

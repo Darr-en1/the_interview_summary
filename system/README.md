@@ -1,8 +1,16 @@
 1.select 和 epoll的区别
 
+select的几大缺点：
+- 每次调用select，都需要把fd集合从用户态拷贝到内核态，这个开销在fd很多时会很大
+- 同时每次调用select都需要在内核遍历传递进来的所有fd，这个开销在fd很多时也很大
+- select支持的文件描述符数量太小了，默认是1024
+
+epoll的提升：
+- 本身没有最大并发连接的限制，仅受系统中进程能打开的最大文件数目限制；
+- 效率提升：只有活跃的socket才会主动的去调用callback函数；
+- 省去不必要的内存拷贝：epoll通过内核与用户空间mmap同一块内存实现。
+
 [https://www.jianshu.com/p/430141f95ddb](https://www.jianshu.com/p/430141f95ddb)
-
-
 
 2.程序crash如何定位
 

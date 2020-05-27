@@ -7,6 +7,8 @@
 
 4,http与https的区别，加密怎么加的？
 
+[https://www.jianshu.com/p/6c981b44293d](https://www.jianshu.com/p/6c981b44293d)
+
 5.http各种返回码，401和406啥区别？
 
 6.TCP连接中time_wait状态的理解,time_wait在哪一端产生，作用是什么
