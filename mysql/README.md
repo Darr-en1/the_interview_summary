@@ -6,6 +6,9 @@
 
 4.mysql 索引在什么情况下会失效
 
+[https://juejin.im/post/5ec15ab9f265da7bc60e1910?utm_source=gold_browser_extension](https://juejin.im/post/5ec15ab9f265da7bc60e1910?utm_source=gold_browser_extension)
+[https://juejin.im/post/5de99dd2518825125e1ba49d](https://juejin.im/post/5de99dd2518825125e1ba49d)
+
 5.mysql 的索引模型
 
 6.mysql 主从同步怎么搞的？分哪几个过程？如果有一台新机器要加到从机里，怎么个过程。

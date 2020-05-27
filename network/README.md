@@ -9,4 +9,13 @@
 
 5.http各种返回码，401和406啥区别？
 
-6. TCP连接中time_wait状态的理解,time_wait在哪一端产生，作用是什么
+6.TCP连接中time_wait状态的理解,time_wait在哪一端产生，作用是什么
+
+7.OSI，TCP/IP，五层协议的体系结构，以及各层协议
+
+[https://www.nowcoder.com/questionTerminal/6032e54a13b54a81ae2697d2a8477244](https://www.nowcoder.com/questionTerminal/6032e54a13b54a81ae2697d2a8477244)
+
+8.TCP/IP Socket http 概念
+
+[https://www.jianshu.com/p/2357fd67e612](https://www.jianshu.com/p/2357fd67e612)\
+[https://www.jianshu.com/p/8565912949bb](https://www.jianshu.com/p/8565912949bb)

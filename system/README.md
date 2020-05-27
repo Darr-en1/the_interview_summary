@@ -1,5 +1,9 @@
 1.select 和 epoll的区别
 
+[https://www.jianshu.com/p/430141f95ddb](https://www.jianshu.com/p/430141f95ddb)
+
+
+
 2.程序crash如何定位
 
 3.服务性能问题如何定位
