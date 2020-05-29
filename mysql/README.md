@@ -1,5 +1,20 @@
 1.MySQL 事务的四个隔离级别？ 先说了四个级别的区别，然后说了每个级别可能产生的问题
 
+|级别	| symbol	|值|	描述|
+|  ----   |  ----   |  ----   |  ----   |
+|读未提交	|READ-UNCOMMITTED	|0	|存在脏读、不可重复读、幻读的问题|
+|读已提交	|READ-COMMITTED	|1	|解决脏读的问题，存在不可重复读、幻读的问题|
+|可重复读	|REPEATABLE-READ	|2	|mysql 默认级别，解决脏读、不可重复读的问题，存在幻读的问题。使用 MMVC机制 实现可重复读|
+|序列化	|SERIALIZABLE	|3	|解决脏读、不可重复读、幻读，可保证事务安全，但完全串行执行，性能最低|
+
+MySQL的默认隔离级别就是Repeatable,Oracle postgresql 默认Read committed
+
+ 查看数据库隔离级别 `show variables like 'transaction_isolation';`
+
+[https://segmentfault.com/a/1190000016566788](https://segmentfault.com/a/1190000016566788)
+
+[https://www.cnblogs.com/jycboy/p/transaction.html](https://www.cnblogs.com/jycboy/p/transaction.html)
+
 2.binlog 日志和 redolog 日志清楚吗？ 说了两个日志的作用以及两阶段提交
 
 3.mysql 有那些存储引擎，有哪些区别
@@ -19,4 +34,8 @@
 
 9.MySQL 如何分析一条语句的执行过程。delete from t1 limit 3和delete from t1的区别？
 
+10.普通索引与唯一索引
 
+[https://blog.csdn.net/weixin_42570248/article/details/89099989?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase](https://blog.csdn.net/weixin_42570248/article/details/89099989?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
+
+11.MVCC
