@@ -1,4 +1,7 @@
 1.一个完整的 HTTP 请求会涉及到哪些协议？
+
+[https://www.cnblogs.com/onepixel/p/7092302.html](https://www.cnblogs.com/onepixel/p/7092302.html)
+
 [https://zhuanlan.zhihu.com/p/37436528](https://zhuanlan.zhihu.com/p/37436528)
 
 2.一个 10M 大小的 buffer 里存满了数据，现在要把这个 buffer 里的数据尽量发出去，可以允许部分丢包，问是用TCP好还是UDP好？为什么？

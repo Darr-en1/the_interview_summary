@@ -8,4 +8,7 @@
 
 
 2.快排 最小堆 冒泡 插入，堆排序等排序方法
+
+![sort](sort.png)
+
 [https://www.cnblogs.com/onepixel/p/7674659.html](https://www.cnblogs.com/onepixel/p/7674659.html)

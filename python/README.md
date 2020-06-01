@@ -10,6 +10,8 @@
 
 4.python内存管理
 
+[https://v3u.cn/book/member.html](https://v3u.cn/book/member.html)
+
 5.循环引用的处理（弱引用）
 
 6.深浅拷贝
