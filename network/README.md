@@ -1,4 +1,4 @@
-**1.一个完整的 HTTP 请求会涉及到哪些协议？**
+### 1.一个完整的 HTTP 请求会涉及到哪些协议？
 
 应用层 http 协议  ssl 加密协议
 
@@ -23,7 +23,7 @@ ARP协议:IP地址获取MAC地址的一个网络层协议
 
 [https://zhuanlan.zhihu.com/p/38240894](https://zhuanlan.zhihu.com/p/38240894)
 
-**2.一个 10M 大小的 buffer 里存满了数据，现在要把这个 buffer 里的数据尽量发出去，可以允许部分丢包，问是用TCP好还是UDP好？为什么？**
+### 2.一个 10M 大小的 buffer 里存满了数据，现在要把这个 buffer 里的数据尽量发出去，可以允许部分丢包，问是用TCP好还是UDP好？为什么？
 
 TCP UDP都是传输层协议
 
@@ -47,27 +47,43 @@ UDP:
 
 [https://zhuanlan.zhihu.com/p/24860273](https://zhuanlan.zhihu.com/p/24860273)
 
-**3.tcp 的握手与挥手**
+### 3.tcp的握手与挥手
 
+SYN：同步标志        同步序列编号(Synchronize Sequence Numbers)栏有效。该标志仅在三次握手建立TCP连接时有效。它提示TCP连接的服务端检查序列编号，该序列编号为TCP连接初始端(一般是客户端)的初始序列编号。在这里，可以把 TCP序列编号看作是一个范围从0到4，294，967，295的32位计数器。通过TCP连接交换的数据中每一个字节都经过序列编号。在TCP报头中的序列编号栏包括了TCP分段中第一个字节的序列编号。
+
+ACK：确认标志        确认编号(Acknowledgement Number)栏有效。大多数情况下该标志位是置位的。TCP报头内的确认编号栏内包含的确认编号(w+1，Figure-1)为下一个预期的序列编号，同时提示远端系统已经成功接收所有数据。
+
+TCP协议工作在传输层，是一种可靠的面向连接的数据流协议。TCP之所以可靠，是因为它保证了传送数据包的顺序。顺序是用一个序列号来保证的。响应包内也包括一个序列号，表示接收方准备好这个序列号的包。在TCP传送一个数据包时，它会把这个数据包放入重发队列中，同时启动计时器，如果收到了关于这个包的确认信息，便将此数据包从队列中删除，如果在计时器超时的时候仍然没有收到确认信息，则需要重新发送该数据包。另外，TCP通过数据分段中的序列号来保证所有传输的数据可以按照正常的顺序进行重组，从而保证数据传输的完整。
+
+
+TCP通讯中主要有连接的建立、数据的传输、连接的关闭三个过程。每个过程完成不同的工作，而且序列号和确认号在每个过程中的变化都是不同的。
+
+TCP建立连接，也就是三路握手，需要三步完成。发送第一个SYN的一端执行的是主动打开。而接收这个SYN并发回下一个SYN的另一端执行的是被动打开。过程大致如下：
+
+1.客户端向服务器发送一个同步数据包请求建立连接，该数据包中，初始序列号（ISN）是客户端随机产生的一个值，确认号是0； 
+
+2.服务器收到这个同步请求数据包后，会对客户端进行一个同步确认。这个数据包中，序列号（ISN）是服务器随机产生的一个值，确认号是客户端的初始序列号+1；
+
+3.客户端收到这个同步确认数据包后，再对服务器进行一个确认。该数据包中，序列号是上一个同步请求数据包中的确认号值，确认号是服务器的初始序列号+1。
 
 
 [https://blog.csdn.net/feng125452/article/details/33347169](https://blog.csdn.net/feng125452/article/details/33347169)
 
 [https://hit-alibaba.github.io/interview/basic/network/TCP.html](https://hit-alibaba.github.io/interview/basic/network/TCP.html)
 
-**4,http与https的区别，加密怎么加的？**
+### 4,http与https的区别，加密怎么加的？
 
 [https://www.jianshu.com/p/6c981b44293d](https://www.jianshu.com/p/6c981b44293d)
 
-**5.http各种返回码，401和406啥区别？**
+### 5.http各种返回码，401和406啥区别？
 
-**6.TCP连接中time_wait状态的理解,time_wait在哪一端产生，作用是什么**
+### 6.TCP连接中time_wait状态的理解,time_wait在哪一端产生，作用是什么
 
-**7.OSI，TCP/IP，五层协议的体系结构，以及各层协议**
+### 7.OSI，TCP/IP，五层协议的体系结构，以及各层协议
 
 [https://www.nowcoder.com/questionTerminal/6032e54a13b54a81ae2697d2a8477244](https://www.nowcoder.com/questionTerminal/6032e54a13b54a81ae2697d2a8477244)
 
-**8.TCP/IP Socket http 概念**
+### 8.TCP/IP Socket http 概念
 
 [https://www.jianshu.com/p/2357fd67e612](https://www.jianshu.com/p/2357fd67e612)\
 [https://www.jianshu.com/p/8565912949bb](https://www.jianshu.com/p/8565912949bb)
