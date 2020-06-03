@@ -1,4 +1,4 @@
-### 1.动态规划与贪心有什么区别
+### 动态规划与贪心有什么区别
 
 [https://labuladong.gitbook.io/algo/dong-tai-gui-hua-xi-lie/dong-tai-gui-hua-xiang-jie-jin-jie](https://labuladong.gitbook.io/algo/dong-tai-gui-hua-xi-lie/dong-tai-gui-hua-xiang-jie-jin-jie)
 

@@ -1,4 +1,4 @@
-### 1.select和epoll的区别
+### Select和epoll的区别
 
 select的几大缺点：
 - 每次调用select，都需要把fd集合从用户态拷贝到内核态，这个开销在fd很多时会很大

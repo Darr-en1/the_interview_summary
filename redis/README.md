@@ -1,7 +1,7 @@
 redis知识图谱
 ![redis知识图谱](redis.png)
 
-### 1.redis数据结构的底层实现
+### Redis数据结构的底层实现
 
 redis的数据类型 8种
 
