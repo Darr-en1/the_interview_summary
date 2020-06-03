@@ -23,7 +23,7 @@ ARP协议:IP地址获取MAC地址的一个网络层协议
 
 [https://zhuanlan.zhihu.com/p/38240894](https://zhuanlan.zhihu.com/p/38240894)
 
-### 2.一个 10M 大小的 buffer 里存满了数据，现在要把这个 buffer 里的数据尽量发出去，可以允许部分丢包，问是用TCP好还是UDP好？为什么？
+### 一个10M大小的buffer里存满了数据,现在要把这个buffer里的数据尽量发出去,可以允许部分丢包,问是用TCP好还是UDP好?为什么?
 
 TCP UDP都是传输层协议
 
@@ -47,7 +47,7 @@ UDP:
 
 [https://zhuanlan.zhihu.com/p/24860273](https://zhuanlan.zhihu.com/p/24860273)
 
-### 3.tcp的握手与挥手
+### Tcp的握手与挥手
 三次握手
 ![Three-way Handshake.jpg](Three-way Handshake.jpg)
 

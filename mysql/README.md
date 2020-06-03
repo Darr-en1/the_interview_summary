@@ -15,7 +15,7 @@ MySQL的默认隔离级别就是Repeatable,Oracle postgresql 默认Read committe
 
 [https://www.cnblogs.com/jycboy/p/transaction.html](https://www.cnblogs.com/jycboy/p/transaction.html)
 
-### 2.binlog 日志和 redolog 日志清楚吗？ 说了两个日志的作用以及两阶段提交
+### Binlog日志和redolog日志,两个日志的作用以及两阶段提交
 
 ### 3.mysql 有那些存储引擎，有哪些区别
 
