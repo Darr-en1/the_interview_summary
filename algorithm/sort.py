@@ -27,16 +27,32 @@ def selection_sort(arr):
 
 def quick_sort(arr):
     def _quick_sort(arr, left, right):
-        def partition(arr, left, right):
-            pivot = arr[left]
-            j = left
-            for i in range(left + 1, right + 1):
-                if arr[i] < pivot:
-                    arr[j + 1], arr[i] = arr[i], arr[j + 1]
-                    j += 1
+        # def partition(arr, left, right):
+        #     pivot = arr[left]
+        #     j = left
+        #     for i in range(left + 1, right + 1):
+        #         if arr[i] < pivot:
+        #             arr[j + 1], arr[i] = arr[i], arr[j + 1]
+        #             j += 1
+        #
+        #     arr[left], arr[j] = arr[j], arr[left]
+        #     return j
 
-            arr[left], arr[j] = arr[j], arr[left]
-            return j
+        def partition(arr, left, right):
+            pivot = left
+            left = left + 1
+            while left < right:
+
+                while arr[left] <= arr[pivot] and left < right:
+                    left += 1
+                while arr[right] >= arr[pivot] and left <= right:
+                    right -= 1
+
+                if left < right:
+                    arr[left], arr[right] = arr[right], arr[left]
+
+            arr[right], arr[pivot] = arr[pivot], arr[right]
+            return right
 
         if left < right:
             partition_index = partition(arr, left, right)
@@ -48,5 +64,5 @@ def quick_sort(arr):
     return _quick_sort(arr, 0, len(arr) - 1)
 
 
-print(quick_sort([]))
+print(quick_sort([2, 5, 10, 7, 1, 3]))
 # print(list(range(10, -1, -1)))

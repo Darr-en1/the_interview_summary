@@ -25,6 +25,12 @@ ARP协议:IP地址获取MAC地址的一个网络层协议
 
 2.一个 10M 大小的 buffer 里存满了数据，现在要把这个 buffer 里的数据尽量发出去，可以允许部分丢包，问是用TCP好还是UDP好？为什么？
 
+UDP 基于无连接，快
+
+[https://blog.fundebug.com/2019/03/22/differences-of-tcp-and-udp/](https://blog.fundebug.com/2019/03/22/differences-of-tcp-and-udp/)
+
+[https://zhuanlan.zhihu.com/p/24860273](https://zhuanlan.zhihu.com/p/24860273)
+
 3.tcp 的握手与挥手
 
 4,http与https的区别，加密怎么加的？

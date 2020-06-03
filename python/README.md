@@ -6,6 +6,13 @@
 
 2.进程间通讯方法
 
+multiprocessing.Pipe:适用于两个进程之间，性能高于Queue
+
+multiprocessing.Queue:可用于进程间通信,但在进程池中失效
+
+multiprocessing.Manager:分装了进程间通信的多个对象
+
+
 3.python装饰器 装饰器传参
 
 4.python内存管理
