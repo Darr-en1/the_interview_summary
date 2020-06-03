@@ -1,4 +1,4 @@
-1.一个完整的 HTTP 请求会涉及到哪些协议？
+**1.一个完整的 HTTP 请求会涉及到哪些协议？**
 
 应用层 http 协议  ssl 加密协议
 
@@ -23,29 +23,51 @@ ARP协议:IP地址获取MAC地址的一个网络层协议
 
 [https://zhuanlan.zhihu.com/p/38240894](https://zhuanlan.zhihu.com/p/38240894)
 
-2.一个 10M 大小的 buffer 里存满了数据，现在要把这个 buffer 里的数据尽量发出去，可以允许部分丢包，问是用TCP好还是UDP好？为什么？
+**2.一个 10M 大小的 buffer 里存满了数据，现在要把这个 buffer 里的数据尽量发出去，可以允许部分丢包，问是用TCP好还是UDP好？为什么？**
 
-UDP 基于无连接，快
+TCP UDP都是传输层协议
+
+TCP:
+- TCP 提供一种面向连接的、可靠的字节流服务
+- 在一个 TCP 连接中，仅有两方进行彼此通信。广播和多播不能用于 TCP
+- TCP 使用校验和，确认和重传机制来保证可靠传输
+- TCP 给数据分节进行排序，并使用累积确认保证数据的顺序不变和非重复
+- TCP 使用滑动窗口机制来实现流量控制，通过动态改变窗口的大小进行拥塞控制
+
+注意：TCP 并不能保证数据一定会被对方接收到，因为这是不可能的。TCP 能够做到的是，如果有可能，就把数据递送到接收方，否则就（通过放弃重传并且中断连接这一手段）通知用户。因此准确说 TCP 也不是 100% 可靠的协议，它所能提供的是数据的可靠递送或故障的可靠通知。
+
+UDP:
+- UDP 缺乏可靠性。UDP 本身不提供确认，序列号，超时重传等机制。UDP 数据报可能在网络中被复制，被重新排序。即 UDP 不保证数据报会到达其最终目的地，也不保证各个数据报的先后顺序，也不保证每个数据报只到达一次
+- UDP 数据报是有长度的。每个 UDP 数据报都有长度，如果一个数据报正确地到达目的地，那么该数据报的长度将随数据一起传递给接收方。而 TCP 是一个字节流协议，没有任何（协议上的）记录边界。
+- UDP 是无连接的。UDP 客户和服务器之前不必存在长期的关系。UDP 发送数据报之前也不需要经过握手创建连接的过程。
+- UDP 支持多播和广播。
+
 
 [https://blog.fundebug.com/2019/03/22/differences-of-tcp-and-udp/](https://blog.fundebug.com/2019/03/22/differences-of-tcp-and-udp/)
 
 [https://zhuanlan.zhihu.com/p/24860273](https://zhuanlan.zhihu.com/p/24860273)
 
-3.tcp 的握手与挥手
+**3.tcp 的握手与挥手**
 
-4,http与https的区别，加密怎么加的？
+
+
+[https://blog.csdn.net/feng125452/article/details/33347169](https://blog.csdn.net/feng125452/article/details/33347169)
+
+[https://hit-alibaba.github.io/interview/basic/network/TCP.html](https://hit-alibaba.github.io/interview/basic/network/TCP.html)
+
+**4,http与https的区别，加密怎么加的？**
 
 [https://www.jianshu.com/p/6c981b44293d](https://www.jianshu.com/p/6c981b44293d)
 
-5.http各种返回码，401和406啥区别？
+**5.http各种返回码，401和406啥区别？**
 
-6.TCP连接中time_wait状态的理解,time_wait在哪一端产生，作用是什么
+**6.TCP连接中time_wait状态的理解,time_wait在哪一端产生，作用是什么**
 
-7.OSI，TCP/IP，五层协议的体系结构，以及各层协议
+**7.OSI，TCP/IP，五层协议的体系结构，以及各层协议**
 
 [https://www.nowcoder.com/questionTerminal/6032e54a13b54a81ae2697d2a8477244](https://www.nowcoder.com/questionTerminal/6032e54a13b54a81ae2697d2a8477244)
 
-8.TCP/IP Socket http 概念
+**8.TCP/IP Socket http 概念**
 
 [https://www.jianshu.com/p/2357fd67e612](https://www.jianshu.com/p/2357fd67e612)\
 [https://www.jianshu.com/p/8565912949bb](https://www.jianshu.com/p/8565912949bb)

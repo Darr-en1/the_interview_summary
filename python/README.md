@@ -15,6 +15,12 @@ multiprocessing.Manager:分装了进程间通信的多个对象
 
 3.python装饰器 装饰器传参
 
+[https://darr-en1.github.io/2020/01/16/1/](https://darr-en1.github.io/2020/01/16/1/)
+
+[https://darr-en1.github.io/2019/03/12/1/](https://darr-en1.github.io/2019/03/12/1/)
+
+
+
 4.python内存管理
 
 [https://v3u.cn/book/member.html](https://v3u.cn/book/member.html)

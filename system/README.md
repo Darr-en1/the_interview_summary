@@ -20,6 +20,20 @@ logger 单步调试
 
 3.服务性能问题如何定位
 
+检索日志中的异常
+
+CPU占用率
+
+内存占用
+
+磁盘I/O
+
+网络I/O
+
+数据库的监控分析: 长连接，久sql记录
+
+[https://blog.csdn.net/smooth00/article/details/63680191](https://blog.csdn.net/smooth00/article/details/63680191)
+
 4.gdb怎么切换线程
 
 5.查看 CPU 的命令和磁盘 IO 的命令
