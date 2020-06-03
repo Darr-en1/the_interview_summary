@@ -1,4 +1,4 @@
-1.select 和 epoll的区别
+### 1.select和epoll的区别
 
 select的几大缺点：
 - 每次调用select，都需要把fd集合从用户态拷贝到内核态，这个开销在fd很多时会很大
@@ -12,13 +12,13 @@ epoll的提升：
 
 [https://www.jianshu.com/p/430141f95ddb](https://www.jianshu.com/p/430141f95ddb)
 
-2.程序crash如何定位
+### 2.程序crash如何定位
 
 logger 单步调试
 
 [https://zhuanlan.zhihu.com/p/27700767](https://zhuanlan.zhihu.com/p/27700767)
 
-3.服务性能问题如何定位
+### 3.服务性能问题如何定位
 
 检索日志中的异常
 
@@ -34,22 +34,22 @@ CPU占用率
 
 [https://blog.csdn.net/smooth00/article/details/63680191](https://blog.csdn.net/smooth00/article/details/63680191)
 
-4.gdb怎么切换线程
+### 4.gdb怎么切换线程
 
-5.查看 CPU 的命令和磁盘 IO 的命令
+### 5.查看 CPU 的命令和磁盘 IO 的命令
 
-6.linux 系统里，一个被打开的文件可以被另一个进程删除吗？
+### 6.linux 系统里，一个被打开的文件可以被另一个进程删除吗？
 
-7.linux 信号
+### 7.linux 信号
 
-8.僵尸进程
+### 8.僵尸进程
 
-9.top命令
+### 9.top命令
 
-10.软硬链接
+### 10.软硬链接
 
-11.linux所有文件类型
+### 11.linux所有文件类型
 
-12.fork()的返回值
+### 12.fork()的返回值
 
-13.项目中内存或cpu占用过高如何排查
+### 13.项目中内存或cpu占用过高如何排查

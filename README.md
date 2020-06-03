@@ -1,6 +1,6 @@
 |  Date   | [algorithm](algorithm)  | [design](design)  | [framework](framework)  | [python](python)  | [network](network)  | [rabbitmq](rabbitmq)  | [redis](redis)  |  [system](system)  |  [mysql](mysql)  |   [leetcode](https://leetcode-cn.com/)  | 
 |  ----   |  ----   |  ----   |  ----   |  ----   |  ----   |  ----   |  ----   |  ----   |  ----   | ----   |
-| 5.26    | 1 | 1 |  | 1 |  |  | [redis数据结构的底层实现](redis#1redis数据结构的底层实现) | 1 | 1 |  |
+| 5.26    | [1.动态规划与贪心有什么区别](algorithm#1动态规划与贪心有什么区别) | [1.设计一个算法，抽奖次数越多中奖概率就越高](design#1设计一个算法，抽奖次数越多中奖概率就越高) |  | [1.一个完整的HTTP请求会涉及到哪些协议](network#1一个完整的HTTP请求会涉及到哪些协议) |  |  | [1.redis数据结构的底层实现](redis#1redis数据结构的底层实现) | [1.select和epoll的区别](system#1select和epoll的区别) | [1.MySQL事务的四个隔离级别](mysql#1MySQL事务的四个隔离级别?) |  |
 | 6.1    | 2 |  |  |  | 1 |  |  |  |  | [矩阵中的路径](https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof/) |
 | 6.2    |  | 2 |  | 2 | 2 |  |  | 2 |  | [机器人的运动范围](https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/) |
-| 6.3    |  |  |  | 3 | 3 |  |2 | 3 | 2 | [剪绳子](https://leetcode-cn.com/problems/jian-sheng-zi-lcof/) |
+| 6.3    |  |  |  | 3 | [3.tcp的握手与挥手](network#3tcp的握手与挥手) |  |2 | 3 | [mysql](mysql) | [剪绳子](https://leetcode-cn.com/problems/jian-sheng-zi-lcof/) |
