@@ -49,10 +49,10 @@ UDP:
 
 ### Tcp的握手与挥手
 三次握手
-![Three-way Handshake.jpg](Three-way Handshake.jpg)
+![Three_way_Handshake.jpg](Three_way_Handshake.jpg)
 
 四次挥手
-![Four times to wave.jpg](Four times to wave.jpg)
+![Four_times_to_wave.jpg](Four_times_to_wave.jpg)
 
 [https://zhuanlan.zhihu.com/p/86426969](https://zhuanlan.zhihu.com/p/86426969)
 

@@ -190,6 +190,14 @@ Redis中sorted set的实现是这样的：
 
 ###基于REDIS实现延时任务
 
+rabbitmq 可以通过死信队列实现
+
+python 中 celery 可以实现定时任务
+
+前两者不可以修改定时时间
+
+redis可以使用zset实现，可以修改定时时间
+
 [https://juejin.im/post/5caf45b96fb9a0688b573d6c](https://juejin.im/post/5caf45b96fb9a0688b573d6c)
 
 ### Redis持久化有哪几种方式
