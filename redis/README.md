@@ -200,7 +200,7 @@ redis可以使用zset实现，可以修改定时时间
 
 [https://juejin.im/post/5caf45b96fb9a0688b573d6c](https://juejin.im/post/5caf45b96fb9a0688b573d6c)
 
-### Redis持久化有哪几种方式
+### Redis持久化
 
 ### Redis的ZSET做排行榜时,如果要实现分数相同时按时间顺序排序怎么实现？
 

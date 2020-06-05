@@ -23,7 +23,7 @@ multiprocessing.Manager:分装了进程间通信的多个对象
 
 
 
-4.python内存管理
+### Python内存管理
 
 [https://v3u.cn/book/member.html](https://v3u.cn/book/member.html)
 

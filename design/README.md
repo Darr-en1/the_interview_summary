@@ -15,9 +15,9 @@
 [https://zhuanlan.zhihu.com/p/34332329](https://zhuanlan.zhihu.com/p/34332329)
 [https://www.jianshu.com/p/1bf9a46efe7a](https://www.jianshu.com/p/1bf9a46efe7a)
 
-### 3.负载均衡算法有哪些
+### 负载均衡算法有哪些
 
-### 4.熔断是怎么实现的
+### 熔断是怎么实现的
 
 ### 5.id生成器怎么实现的，如何实现全局递增
 
