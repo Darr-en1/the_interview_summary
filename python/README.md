@@ -25,8 +25,11 @@ multiprocessing.Manager:分装了进程间通信的多个对象
 
 ### Python内存管理
 
-[https://v3u.cn/book/member.html](https://v3u.cn/book/member.html)
+在Python中，主要通过引用计数进行垃圾回收；通过 “标记-清除” 解决容器对象可能产生的循环引用问题；通过 “分代回收” 以空间换时间的方法提高垃圾回收效率
 
+
+[https://v3u.cn/book/member.html](https://v3u.cn/book/member.html)
+[https://andrewpqc.github.io/2018/10/08/python-memory-management/](https://andrewpqc.github.io/2018/10/08/python-memory-management/)
 5.循环引用的处理（弱引用）
 
 6.深浅拷贝
