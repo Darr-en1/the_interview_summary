@@ -19,6 +19,16 @@ MySQL的默认隔离级别就是Repeatable,Oracle postgresql 默认Read committe
 
 ### Mysql存储引擎及区别
 
+MyISAM  
+非聚集索引
+MyISAM可以没有主键
+
+InnoDB 
+聚集索引
+要求表必须有主键
+
+[https://blog.csdn.net/zgrgfr/article/details/74455547](https://blog.csdn.net/zgrgfr/article/details/74455547)
+
 ### Mysql索引在什么情况下会失效
 
 [https://juejin.im/post/5ec15ab9f265da7bc60e1910?utm_source=gold_browser_extension](https://juejin.im/post/5ec15ab9f265da7bc60e1910?utm_source=gold_browser_extension)

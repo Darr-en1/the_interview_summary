@@ -19,6 +19,8 @@ ARP协议:IP地址获取MAC地址的一个网络层协议
 - 传输层：定义端口，确认主机上应用程序的身份，并将数据包交给对应的应用程序；
 - 应用层：定义数据格式，并按照对应的格式解读数据。
 
+[https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247483989&idx=1&sn=7e2ed852770743d3955ef9d5561fcef3&scene=21#wechat_redirect](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247483989&idx=1&sn=7e2ed852770743d3955ef9d5561fcef3&scene=21#wechat_redirect)
+
 [https://www.cnblogs.com/onepixel/p/7092302.html](https://www.cnblogs.com/onepixel/p/7092302.html)
 
 [https://zhuanlan.zhihu.com/p/38240894](https://zhuanlan.zhihu.com/p/38240894)
@@ -65,6 +67,8 @@ UDP:
 
 ### Http各种返回码401和406啥区别
 
+[https://blog.csdn.net/ningxinyu520/article/details/18217077](https://blog.csdn.net/ningxinyu520/article/details/18217077)
+
 ### TCP连接中time_wait状态的理解,time_wait在哪一端产生，作用是什么
 
 ### OSI，TCP/IP，五层协议的体系结构，以及各层协议
@@ -77,3 +81,5 @@ UDP:
 [https://www.jianshu.com/p/8565912949bb](https://www.jianshu.com/p/8565912949bb)
 
 ### 滑动窗口
+
+[https://mp.weixin.qq.com/s/Tc09ovdNacOtnMOMeRc_uA](https://mp.weixin.qq.com/s/Tc09ovdNacOtnMOMeRc_uA)

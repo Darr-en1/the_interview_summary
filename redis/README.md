@@ -202,7 +202,11 @@ redis可以使用zset实现，可以修改定时时间
 
 ### Redis持久化
 
+[https://juejin.im/post/5b70dfcf518825610f1f5c16](https://juejin.im/post/5b70dfcf518825610f1f5c16)
+
 ### Redis的ZSET做排行榜时,如果要实现分数相同时按时间顺序排序怎么实现
+
+[https://blog.csdn.net/zeus_9i/article/details/51025175](https://blog.csdn.net/zeus_9i/article/details/51025175)
 
 ### 限流(漏桶算法、令牌桶算法)
 
