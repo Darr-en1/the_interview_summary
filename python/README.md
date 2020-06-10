@@ -30,10 +30,10 @@ multiprocessing.Manager:分装了进程间通信的多个对象
 
 [https://v3u.cn/book/member.html](https://v3u.cn/book/member.html)
 [https://andrewpqc.github.io/2018/10/08/python-memory-management/](https://andrewpqc.github.io/2018/10/08/python-memory-management/)
-5.循环引用的处理（弱引用）
+### 循环引用的处理(弱引用)
 
-6.深浅拷贝
+### 深浅拷贝
 
-7.协程的原理
+### 协程的原理
 
-8.python垃圾回收机制
+### python垃圾回收机制
