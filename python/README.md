@@ -42,6 +42,8 @@ multiprocessing.Manager:分装了进程间通信的多个对象
 
 ### 深浅拷贝
 
+[https://www.cnblogs.com/wilber2013/p/4645353.html](https://www.cnblogs.com/wilber2013/p/4645353.html)
+
 ### 协程的原理
 
 ### python垃圾回收机制

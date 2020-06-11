@@ -34,9 +34,21 @@ CPU占用率
 
 [https://blog.csdn.net/smooth00/article/details/63680191](https://blog.csdn.net/smooth00/article/details/63680191)
 
+### 查看CPU的命令和磁盘IO的命令
+
+linux监控CPU、磁盘IO、网络IO、磁盘容量、内存使用
+
+- CPU：vmstat ，sar –u，top
+- 磁盘IO：iostat –xd，sar –d，top
+- 网络IO：iftop -n，ifstat，dstat –nt，sar -n DEV 2 3
+- 磁盘容量：df –h 
+- 内存使用：free –m，top
+
+
+python第三方包 [psutil](https://github.com/giampaolo/psutil)
+
 ### gdb怎么切换线程
 
-### 查看CPU的命令和磁盘IO的命令
 
 ### Linux系统里,一个被打开的文件可以被另一个进程删除吗？
 

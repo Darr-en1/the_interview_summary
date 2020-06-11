@@ -32,20 +32,38 @@ InnoDB
 ### Mysql索引在什么情况下会失效
 
 [https://juejin.im/post/5ec15ab9f265da7bc60e1910?utm_source=gold_browser_extension](https://juejin.im/post/5ec15ab9f265da7bc60e1910?utm_source=gold_browser_extension)
+
 [https://juejin.im/post/5de99dd2518825125e1ba49d](https://juejin.im/post/5de99dd2518825125e1ba49d)
 
-### 5.mysql 的索引模型
+### Mysql索引模型
 
-### 6.mysql 主从同步怎么搞的？分哪几个过程？如果有一台新机器要加到从机里，怎么个过程。
+**常见的索引模型**
+- 有序数组
+- 哈希表
+- 二叉搜索树
+- B-Tree
+- B+Tree
 
-### 7.binlog 日志是 master 推的还是 salve 来拉的？
+[https://blog.csdn.net/weixin_42462202/article/details/104335419](https://blog.csdn.net/weixin_42462202/article/details/104335419)
 
-### 8.乐观锁与悲观锁的区别？
+[https://blog.csdn.net/Abysscarry/article/details/80792876](https://blog.csdn.net/Abysscarry/article/details/80792876)
 
-### 9.MySQL 如何分析一条语句的执行过程。delete from t1 limit 3和delete from t1的区别？
+### 乐观锁与悲观锁的区别
 
-### 10.普通索引与唯一索引
+### Mysql日志系统
+
+### MySQL 如何分析一条语句的执行过程。delete from t1 limit 3和delete from t1的区别
+
+### 普通索引与唯一索引
 
 [https://blog.csdn.net/weixin_42570248/article/details/89099989?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase](https://blog.csdn.net/weixin_42570248/article/details/89099989?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
 
-### 11.MVCC
+### 单列索引和联合索引
+
+[https://blog.csdn.net/Abysscarry/article/details/80792876](https://blog.csdn.net/Abysscarry/article/details/80792876)
+
+### MVCC
+
+### Mysql 主从同步怎么搞的？分哪几个过程？如果有一台新机器要加到从机里，怎么个过程
+
+### Binlog 日志是 master 推的还是 salve 来拉的？

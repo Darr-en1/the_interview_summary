@@ -62,14 +62,22 @@ UDP:
 
 ### Http与https的区别加密逻辑
 
+加密对象：
+通信的加密
+内容的加密
+
+[https://zhuanlan.zhihu.com/p/43789231](https://zhuanlan.zhihu.com/p/43789231)
 [https://www.cnblogs.com/wqhwe/p/5407468.html](https://www.cnblogs.com/wqhwe/p/5407468.html)
-[https://www.jianshu.com/p/6c981b44293d](https://www.jianshu.com/p/6c981b44293d)
 
 ### Http各种返回码401和406啥区别
 
 [https://blog.csdn.net/ningxinyu520/article/details/18217077](https://blog.csdn.net/ningxinyu520/article/details/18217077)
 
-### TCP连接中time_wait状态的理解,time_wait在哪一端产生，作用是什么
+### TCP连接中time_wait状态的理解time_wait在哪一端产生作用是什么
+
+### 滑动窗口
+
+[https://mp.weixin.qq.com/s/Tc09ovdNacOtnMOMeRc_uA](https://mp.weixin.qq.com/s/Tc09ovdNacOtnMOMeRc_uA)
 
 ### OSI，TCP/IP，五层协议的体系结构，以及各层协议
 
@@ -80,6 +88,3 @@ UDP:
 [https://www.jianshu.com/p/2357fd67e612](https://www.jianshu.com/p/2357fd67e612)\
 [https://www.jianshu.com/p/8565912949bb](https://www.jianshu.com/p/8565912949bb)
 
-### 滑动窗口
-
-[https://mp.weixin.qq.com/s/Tc09ovdNacOtnMOMeRc_uA](https://mp.weixin.qq.com/s/Tc09ovdNacOtnMOMeRc_uA)
