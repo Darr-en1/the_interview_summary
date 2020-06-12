@@ -47,10 +47,9 @@ linux监控CPU、磁盘IO、网络IO、磁盘容量、内存使用
 
 python第三方包 [psutil](https://github.com/giampaolo/psutil)
 
-### gdb怎么切换线程
+### Linux系统里一个被打开的文件可以被另一个进程删除吗
 
-
-### Linux系统里,一个被打开的文件可以被另一个进程删除吗？
+### Gdb怎么切换线程
 
 ### linux 信号
 

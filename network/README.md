@@ -50,11 +50,21 @@ UDP:
 [https://zhuanlan.zhihu.com/p/24860273](https://zhuanlan.zhihu.com/p/24860273)
 
 ### Tcp的握手与挥手
+SYN   Synchronize（同步）
+
+ACK (ACKnowledge Character） 
+
+RST   Reset   重连位~ 当RST=1的时候通知重新建立TCP连接
+
+FIN：Finall 
+
 三次握手
 ![Three_way_Handshake.jpg](Three_way_Handshake.jpg)
 
 四次挥手
 ![Four_times_to_wave.jpg](Four_times_to_wave.jpg)
+
+[为什么tcp是三次握手而不是两次握手？](https://zhuanlan.zhihu.com/p/51448333)
 
 [https://zhuanlan.zhihu.com/p/86426969](https://zhuanlan.zhihu.com/p/86426969)
 
@@ -74,6 +84,10 @@ UDP:
 [https://blog.csdn.net/ningxinyu520/article/details/18217077](https://blog.csdn.net/ningxinyu520/article/details/18217077)
 
 ### TCP连接中time_wait状态的理解time_wait在哪一端产生作用是什么
+
+MSL是Maximum Segment Lifetime,译为“报文最大生存时间”
+
+[https://blog.csdn.net/godleading/article/details/50849253](https://blog.csdn.net/godleading/article/details/50849253)
 
 ### 滑动窗口
 

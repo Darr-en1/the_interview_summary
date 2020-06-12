@@ -210,7 +210,11 @@ redis可以使用zset实现，可以修改定时时间
 
 ### 限流(漏桶算法、令牌桶算法)
 
-### Redis主从同步是怎样的过程？
+[https://www.jianshu.com/p/c02899c30bbd](https://www.jianshu.com/p/c02899c30bbd)
+
+[https://zhuanlan.zhihu.com/p/34762016](https://zhuanlan.zhihu.com/p/34762016)
+
+### Redis主从同步过程
 
 ### Redis如何实现高可用
 
