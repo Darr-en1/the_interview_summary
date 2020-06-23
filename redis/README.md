@@ -216,6 +216,8 @@ redis可以使用zset实现，可以修改定时时间
 
 ### Redis主从同步过程
 
+[https://juejin.im/post/5d80ac83e51d45620821cf87](https://juejin.im/post/5d80ac83e51d45620821cf87)
+
 ### Redis如何实现高可用
 
 ### Redis key 的过期策略

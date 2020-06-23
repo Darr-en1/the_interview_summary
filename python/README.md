@@ -81,3 +81,14 @@ multiprocessing.Manager:分装了进程间通信的多个对象
 [https://blog.csdn.net/xfgryujk/article/details/80854750](https://blog.csdn.net/xfgryujk/article/details/80854750)
 
 ### Python垃圾回收机制
+
+引用计数
+
+标记清除解决循环引用
+
+在循环引用对象的回收中，整个应用程序会被暂停，为了减少应用程序暂停的时间，Python 通过“**分代回收**”(Generational Collection)以空间换时间的方法提高垃圾回收效率。
+
+
+总体来说，在Python中，主要通过引用计数进行垃圾回收；通过 “标记-清除” 解决容器对象可能产生的循环引用问题；通过 “分代回收” 以空间换时间的方法提高垃圾回收效率。
+
+[https://zhuanlan.zhihu.com/p/83251959](https://zhuanlan.zhihu.com/p/83251959)

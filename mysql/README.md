@@ -50,6 +50,8 @@ InnoDB
 
 ### 乐观锁与悲观锁的区别
 
+[https://juejin.im/post/5b4977ae5188251b146b2fc8](https://juejin.im/post/5b4977ae5188251b146b2fc8)
+
 ### Mysql日志系统
 
 ### MySQL 如何分析一条语句的执行过程。delete from t1 limit 3和delete from t1的区别
