@@ -49,18 +49,20 @@ python第三方包 [psutil](https://github.com/giampaolo/psutil)
 
 ### Linux系统里一个被打开的文件可以被另一个进程删除吗
 
-### Gdb怎么切换线程
+[https://zhuanlan.zhihu.com/p/25600743](https://zhuanlan.zhihu.com/p/25600743)
 
-### linux 信号
+### 软硬链接
+
+### Linux信号
 
 ### 僵尸进程
 
 ### top命令
-
-### 软硬链接
 
 ### linux所有文件类型
 
 ### fork()的返回值
 
 ### 项目中内存或cpu占用过高如何排查
+
+### Gdb怎么切换线程

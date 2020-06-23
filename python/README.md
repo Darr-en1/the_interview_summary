@@ -46,4 +46,38 @@ multiprocessing.Manager:分装了进程间通信的多个对象
 
 ### 协程的原理
 
-### python垃圾回收机制
+协程
+
+1.协程是一种轻量级的用户态线程
+
+2.开发者自行控制程序切换时机，而不是像进程和线程那样把控制权交给操作系统
+
+3.协程没有线程、进程切换的时间和资源开销
+
+4.协程是非抢占式调度，当前协程切换到其他协程是由自己控制；线程则是时间片用完抢占时间片调度
+
+优缺点
+
+协程
+优点：
+1.用户态，语言级别；
+
+2.无切换性能消耗；
+
+3.非抢占式；
+
+4.同步代码思维；
+
+5.减少同步锁
+
+缺点：
+
+1.注意全局变量；
+
+2.阻塞操作会导致整个线程被阻塞
+
+[https://www.cnblogs.com/fengf233/p/11548769.html](https://www.cnblogs.com/fengf233/p/11548769.html)
+
+[https://blog.csdn.net/xfgryujk/article/details/80854750](https://blog.csdn.net/xfgryujk/article/details/80854750)
+
+### Python垃圾回收机制
