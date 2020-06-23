@@ -220,6 +220,8 @@ redis可以使用zset实现，可以修改定时时间
 
 ### Redis如何实现高可用
 
+[https://juejin.im/post/5db3f7b5e51d4529ed2918df#heading-18](https://juejin.im/post/5db3f7b5e51d4529ed2918df#heading-18)
+
 ### Redis key 的过期策略
 
 Redis采用的是 定期删除 和 惰性删除 的内存淘汰机制。

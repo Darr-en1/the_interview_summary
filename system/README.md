@@ -51,7 +51,11 @@ python第三方包 [psutil](https://github.com/giampaolo/psutil)
 
 [https://zhuanlan.zhihu.com/p/25600743](https://zhuanlan.zhihu.com/p/25600743)
 
+[https://blog.csdn.net/weiwangchao_/article/details/94578327](https://blog.csdn.net/weiwangchao_/article/details/94578327)
+
 ### 软硬链接
+
+[https://www.jianshu.com/p/dde6a01c4094](https://www.jianshu.com/p/dde6a01c4094)
 
 ### Linux信号
 

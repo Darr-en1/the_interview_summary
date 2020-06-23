@@ -54,6 +54,21 @@ InnoDB
 
 ### Mysql日志系统
 
+redo log（重做日志）: 引擎层 InnoDB引擎特有的日志
+
+binlog（归档日志）: Server层 mysql 通用日志,所有引擎都可以使用
+
+两阶段提交
+
+先写redo log后写binlog。假设在redo log写完，binlog还没有写完的时候，MySQL进程异常重启。由于我们前面说过的，redo log写完之后，系统即使崩溃，仍然能够把数据恢复回来，所以恢复后这一行c的值是1。
+但是由于binlog没写完就crash了，这时候binlog里面就没有记录这个语句。因此，之后备份日志的时候，存起来的binlog里面就没有这条语句。
+然后你会发现，如果需要用这个binlog来恢复临时库的话，由于这个语句的binlog丢失，这个临时库就会少了这一次更新，恢复出来的这一行c的值就是0，与原库的值不同。
+
+先写binlog后写redo log。如果在binlog写完之后crash，由于redo log还没写，崩溃恢复以后这个事务无效，所以这一行c的值是0。但是binlog里面已经记录了“把c从0改成1”这个日志。所以，在之后用binlog来恢复的时候就多了一个事务出来，恢复出来的这一行c的值就是1，与原库的值不同。
+
+[https://www.cnblogs.com/wupeixuan/p/11734501.html](https://www.cnblogs.com/wupeixuan/p/11734501.html)
+
+
 ### MySQL 如何分析一条语句的执行过程。delete from t1 limit 3和delete from t1的区别
 
 ### 普通索引与唯一索引
