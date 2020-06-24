@@ -97,8 +97,8 @@ MSL是Maximum Segment Lifetime,译为“报文最大生存时间”
 
 [https://www.nowcoder.com/questionTerminal/6032e54a13b54a81ae2697d2a8477244](https://www.nowcoder.com/questionTerminal/6032e54a13b54a81ae2697d2a8477244)
 
-### TCP/IP Socket http 概念
+### TCP/IP Socket http概念
 
-[https://www.jianshu.com/p/2357fd67e612](https://www.jianshu.com/p/2357fd67e612)\
+[https://www.jianshu.com/p/2357fd67e612](https://www.jianshu.com/p/2357fd67e612)
 [https://www.jianshu.com/p/8565912949bb](https://www.jianshu.com/p/8565912949bb)
 

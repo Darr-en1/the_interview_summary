@@ -69,7 +69,7 @@ binlog（归档日志）: Server层 mysql 通用日志,所有引擎都可以使�
 [https://www.cnblogs.com/wupeixuan/p/11734501.html](https://www.cnblogs.com/wupeixuan/p/11734501.html)
 
 
-### MySQL 如何分析一条语句的执行过程。delete from t1 limit 3和delete from t1的区别
+### MySQL如何分析一条语句的执行过程。delete from t1 limit 3和delete from t1的区别
 
 ### 普通索引与唯一索引
 

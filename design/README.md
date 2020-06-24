@@ -15,6 +15,11 @@
 [https://zhuanlan.zhihu.com/p/34332329](https://zhuanlan.zhihu.com/p/34332329)
 [https://www.jianshu.com/p/1bf9a46efe7a](https://www.jianshu.com/p/1bf9a46efe7a)
 
+
+### 请求幂等性
+
+### 分布式事务
+
 ### 负载均衡算法有哪些
 
 ### 熔断是怎么实现的
@@ -33,7 +38,6 @@
 
 ### 8.现有一个随机数生成器可以生成0到4的数，现在要让你用这个随机数生成器生成0到6的随机数，要保证生成的数概率均匀。
 
-### 9.请求幂等性
 
-### 10.分布式事务
+
 
