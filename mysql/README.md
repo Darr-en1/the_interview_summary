@@ -71,6 +71,21 @@ binlog（归档日志）: Server层 mysql 通用日志,所有引擎都可以使�
 
 ### MySQL如何分析一条语句的执行过程。delete from t1 limit 3和delete from t1的区别
 
+连接器： 身份认证和权限相关(登录 MySQL 的时候)。
+
+查询缓存: 执行查询语句的时候，会先查询缓存（MySQL 8.0 版本后移除，因为这个功能不太实用）。
+
+分析器: 没有命中缓存的话，SQL 语句就会经过分析器，分析器说白了就是要先看你的 SQL 语句要干嘛，再检查你的 SQL 语句语法是否正确。
+
+优化器： 按照 MySQL 认为最优的方案去执行。
+
+执行器: 执行语句，然后从存储引擎返回数据。
+
+[https://blog.csdn.net/weter_drop/article/details/93386581](https://blog.csdn.net/weter_drop/article/details/93386581)
+
+delete from t1 limit 3和delete from t1的区别: 只删除先找到的三行
+
+
 ### 普通索引与唯一索引
 
 [https://blog.csdn.net/weixin_42570248/article/details/89099989?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase](https://blog.csdn.net/weixin_42570248/article/details/89099989?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)

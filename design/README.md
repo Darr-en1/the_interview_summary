@@ -13,10 +13,12 @@
 集成服务配置管理功能
 
 [https://zhuanlan.zhihu.com/p/34332329](https://zhuanlan.zhihu.com/p/34332329)
+
 [https://www.jianshu.com/p/1bf9a46efe7a](https://www.jianshu.com/p/1bf9a46efe7a)
 
-
 ### 请求幂等性
+
+[https://segmentfault.com/a/1190000020172463](https://segmentfault.com/a/1190000020172463)
 
 ### 分布式事务
 

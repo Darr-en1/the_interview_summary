@@ -100,5 +100,11 @@ MSL是Maximum Segment Lifetime,译为“报文最大生存时间”
 ### TCP/IP Socket http概念
 
 [https://www.jianshu.com/p/2357fd67e612](https://www.jianshu.com/p/2357fd67e612)
+
 [https://www.jianshu.com/p/8565912949bb](https://www.jianshu.com/p/8565912949bb)
 
+### TCP提供可靠传输的工作原理和实现过程
+
+[https://blog.csdn.net/guoweimelon/article/details/50878503](https://blog.csdn.net/guoweimelon/article/details/50878503)
+
+### TCP粘包怎么解决

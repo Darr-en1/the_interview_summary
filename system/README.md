@@ -59,6 +59,8 @@ python第三方包 [psutil](https://github.com/giampaolo/psutil)
 
 ### Linux信号
 
+[https://www.jianshu.com/p/f445bfeea40a](https://www.jianshu.com/p/f445bfeea40a)
+
 ### 僵尸进程
 
 ### top命令

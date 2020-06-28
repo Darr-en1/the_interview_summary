@@ -82,6 +82,8 @@ multiprocessing.Manager:分装了进程间通信的多个对象
 
 ### Python垃圾回收机制
 
+同 [Python内存管理](#Python内存管理) 问题相似
+
 引用计数
 
 标记清除解决循环引用

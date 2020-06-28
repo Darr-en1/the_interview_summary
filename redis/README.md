@@ -228,3 +228,5 @@ Redis采用的是 定期删除 和 惰性删除 的内存淘汰机制。
 
 Redis的内存淘汰机制
 ![Redis的内存淘汰机制](out_of_memory.png)
+
+### Redis6.0
