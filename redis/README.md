@@ -230,3 +230,5 @@ Redis的内存淘汰机制
 ![Redis的内存淘汰机制](out_of_memory.png)
 
 ### Redis6.0
+
+[https://www.cnblogs.com/mr-wuxiansheng/p/12884356.html](https://www.cnblogs.com/mr-wuxiansheng/p/12884356.html)

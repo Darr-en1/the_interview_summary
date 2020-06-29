@@ -94,3 +94,5 @@ multiprocessing.Manager:分装了进程间通信的多个对象
 总体来说，在Python中，主要通过引用计数进行垃圾回收；通过 “标记-清除” 解决容器对象可能产生的循环引用问题；通过 “分代回收” 以空间换时间的方法提高垃圾回收效率。
 
 [https://zhuanlan.zhihu.com/p/83251959](https://zhuanlan.zhihu.com/p/83251959)
+
+### Mro

@@ -105,6 +105,11 @@ MSL是Maximum Segment Lifetime,译为“报文最大生存时间”
 
 ### TCP提供可靠传输的工作原理和实现过程
 
+TCP为了提供可靠传输：
+1. 首先，采用三次握手来建立TCP连接，四次握手来释放TCP连接，从而保证建立的传输信道是可靠的。
+2. 其次，TCP采用了连续ARQ协议（回退N，Go-back-N；超时自动重传）来保证数据传输的正确性，使用滑动窗口协议来保证接方能够及时处理所接收到的数据，进行流量控制。
+3. 最后，TCP使用慢开始、拥塞避免、快重传和快恢复来进行拥塞控制，避免网络拥塞。
+
 [https://blog.csdn.net/guoweimelon/article/details/50878503](https://blog.csdn.net/guoweimelon/article/details/50878503)
 
 ### TCP粘包怎么解决

@@ -90,11 +90,40 @@ delete from t1 limit 3和delete from t1的区别: 只删除先找到的三行
 
 [https://blog.csdn.net/weixin_42570248/article/details/89099989?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase](https://blog.csdn.net/weixin_42570248/article/details/89099989?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
 
+### Changebuffer
+
+ change buffer也是可以持久化的，change buffer在内存中有拷贝，也会被写入磁盘中。将change buffer中的操作应用到原数据页，得到最新结果的过程称为merge。触发持久化merge的操作：
+
+1、访问这个数据页会触发merge外
+
+2、系统有后台线程会定期merge进行持久化
+
+3、在数据库正常关闭（shutdown）的过程中，也会执行merge操作。
+
+
+
+
+
+以下几种情况开启 Change Buffer，会使得 MySQL 数据库明显提升：
+
+1、数据库大部分是非唯一索引
+
+2、业务是写多读少
+
+3、写入数据之后并不会立即读取它
+
+[https://blog.csdn.net/sayoko06/article/details/90258189](https://blog.csdn.net/sayoko06/article/details/90258189)
+
+[https://www.cnblogs.com/jamaler/p/12371205.html](https://www.cnblogs.com/jamaler/p/12371205.html)
+
 ### 单列索引和联合索引
 
 [https://blog.csdn.net/Abysscarry/article/details/80792876](https://blog.csdn.net/Abysscarry/article/details/80792876)
 
 ### MVCC
+(Multi-Version Concurrency Control)
+
+[https://www.cnblogs.com/axing-articles/p/11415763.html](https://www.cnblogs.com/axing-articles/p/11415763.html)
 
 ### Mysql 主从同步怎么搞的？分哪几个过程？如果有一台新机器要加到从机里，怎么个过程
 
