@@ -123,8 +123,154 @@ delete from t1 limit 3和delete from t1的区别: 只删除先找到的三行
 ### MVCC
 (Multi-Version Concurrency Control)
 
-[https://www.cnblogs.com/axing-articles/p/11415763.html](https://www.cnblogs.com/axing-articles/p/11415763.html)
+undo log:撤回日志记录,也称版本链。当前事务未提交之前，undo log保存了当前事务的正在操作的数据记录的所有版本的信息，undo log中的数据可作为数据旧版本快照供其他并发事务进行快照读
+
+read_view的更新方式：
+
+注意：仅分析RC级别和RR级别，因为MVCC不适用于其它两个隔离级别。
+
+a、对于Read Committed级别的：
+
+基本描述：每次执行select都会创建新的read_view，更新旧read_view，保证能读取到其他事务已经COMMIT的内容（读提交的语义）；
+
+详细分析：假设当前有事务A和事务A+1并发进行。在当前级别下，事务A每次select的时候会创建新的read_view，此时可以简单理解为事务A会提交，也就是让事务A执行完毕，然后创建一个新的事务比如是事务A+2。这样子的话，因为事务A+2的事务ID肯定是比事务A+1的ID大，所以就能够读取到事务A+1的更新了。那么便可以读取到在创建这个新的read_view之前事务A+1所提交的所有信息。这是RC级别下能读取到其他事务已经COMMIT的内容的原因所在。
+b、对于Repeatable Read级别的：
+
+第一次select时更新这个read_view，以后不会再更新，后续所有的select都是复用这个read_view。所以能保证每次读取的一致性，即都是读取第一次读取到的内容（可重复读的语义）。
+
+注意：通过对read view的更新方式的分析可以得出：对于InnoDB下的MVCC来说，RR虽然比RC隔离级别高，但是开销反而相对少（因为不用频繁更新read_view）。
+
+
+[MVCC--多版本并发控制机制](https://www.cnblogs.com/axing-articles/p/11415763.html)
 
 ### Mysql 主从同步怎么搞的？分哪几个过程？如果有一台新机器要加到从机里，怎么个过程
 
 ### Binlog 日志是 master 推的还是 salve 来拉的？
+
+### explain
+
+condition,Using index,Using where)Extra(Using where,Using index,Using index 
+
+### MySQL表锁和行锁
+
+MySQL里面表级别的锁有两种：一种是表锁，一种是元数据锁（meta data lock，MDL)。
+
+
+MDL锁的全称为Meta data lock，是在MySQL中sql层实现的锁，从其名字可以看出来，
+它的作用主要是为了保护元数据的访问。而在MySQL中，元数据就是指如schema，
+table，function这样的对象的元数据信息（如表名，表的列，列的属性等等）。
+
+在MySQL 5.5版本中引入了MDL，**当对一个表做增删改查操作的时候，加MDL读锁**；**当要对表做结构变更操作的时候，加MDL写锁**。
+
+读锁之间不互斥，因此你可以有多个线程同时对一张表增删改查。
+
+读写锁之间、写锁之间是互斥的，用来保证变更表结构操作的安全性。因此，如果有两个线程要同时给一个表加字段，其中一个要等另一个执行完才能开始执行。
+
+**申请MDL锁的操作会形成一个队列，队列中写锁获取优先级高于读锁。一旦出现写锁等待，不但当前操作会被阻塞，同时还会阻塞后续该表的所有操作。**事务一旦申请到MDL锁后，直到事务执行完才会将锁释放。
+
+**如何安全地给小表加字段？**
+
+首先我们要解决长事务，事务不提交，就会一直占着MDL锁。在MySQL的information_schema 库的 innodb_trx 表中，你可以查到当前执行中的事务。如果你要做DDL变更的表刚好有长事务在执行，要考虑先暂停DDL，或者kill掉这个长事务。
+
+但考虑一下这个场景。如果你要变更的表是一个热点表，虽然数据量不大，但是上面的请求很频繁，而你不得不加个字段，你该怎么做呢？
+
+这时候kill可能未必管用，因为新的请求马上就来了。比较理想的机制是，在alter table语句里面设定等待时间，如果在这个指定的等待时间里面能够拿到MDL写锁最好，拿不到也不要阻塞后面的业务语句，先放弃。之后开发人员或者DBA再通过重试命令重复这个过程。
+
+Online DDL
+
+InnoDB锁
+
+行锁的有两种锁模式：
+
+S锁（共享锁）：不同事务之间的S锁互不排斥，也即是一个事务对某行加了S锁后，其它事务依然可以对该行加S锁进行访问。
+
+X锁（排他锁）：不同事务之间的X锁相互排斥，即一个事务对某行加了X锁后，其它事务不能对该行再加X锁。
+
+在InnoDB行锁中，又分为几种不同类型行锁。
+
+Record锁：锁定某行记录，在行的索引上加锁。
+
+Gap锁：锁定某个区间，即某个索引的范围区间内加锁，不包含边界行。locking reads，UPDATE和DELETE时，除了对唯一索引的唯一搜索外都会获取gap锁或next-key锁。即锁住其扫描的范围。
+
+Next-key锁：同时锁住某行记录和一个区间，上界为开区间，下界为闭区间。
+
+
+
+
+[MySQL 表锁和行锁机制](https://juejin.im/entry/5a55c7976fb9a01cba42786f)
+
+### 共享锁与排他锁
+读锁（S锁，共享锁）和写锁（X锁，排他锁）。
+
+SELECT … LOCK IN SHARE MODE 在读取的行上设置一个共享锁，其他的session可以读这些行，
+但在你的事务提交之前不可以修改它们。如果这些行里有被其他的还没有提交的事务修改，你的查询会等到那个事务结束之后使用最新的值。
+
+索引搜索遇到的记录，SELECT … FOR UPDATE 会锁住行及任何关联的索引条目，
+和你对那些行执行 update 语句相同。其他的事务会被阻塞在对这些行执行 update 操作，
+获取共享锁，或从某些事务隔离级别读取数据等操作。一致性读(Consistent Nonlocking Reads)会忽略在读取视图上的记录的任何锁。（旧版本的记录不能被锁定；它们通过应用撤销日志在记录的内存副本上时被重建。）
+
+所有被共享锁和排他锁查询所设置的锁都会在**事务提交或者回滚**之后被释放。
+
+总结
+
+SELECT … LOCK IN SHARE MODE ：共享锁(S锁, share locks)。其他事务可以读取数据，但不能对该数据进行修改，直到所有的共享锁被释放。
+
+如果事务对某行数据加上共享锁之后，可进行读写操作；其他事务可以对该数据加共享锁，但不能加排他锁，且只能读数据，不能修改数据。
+
+SELECT … FOR UPDATE：排他锁(X锁, exclusive locks)。如果事务对数据加上排他锁之后，则其他事务不能对该数据加任何的锁。获取排他锁的事务既能读取数据，也能修改数据。
+
+**注：普通 select 语句默认不加锁，而CUD操作默认加排他锁。**
+
+
+5、行锁和索引的关系：查询字段未加索引（主键索引、普通索引等）时，使用表锁.
+如果MySQL认为全表扫描效率更高，它就不会使用索引，这种情况下InnoDB将使用表锁，而不是行锁。
+
+**注：InnoDB行级锁基于索引实现。**
+
+未加索引时，两种行锁情况为（使用表锁）：
+- 事务1获取某行数据共享锁，其他事务可以获取不同行数据的共享锁，不可以获取不同行数据的排他锁
+- 事务1获取某行数据排他锁，其他事务不可以获取不同行数据的共享锁、排他锁
+
+加索引后，两种行锁为（使用行锁）：
+
+事务1获取某行数据共享锁，其他事务可以获取不同行数据的排他锁
+事务1获取某行数据排他锁，其他事务可以获取不同行数据的共享锁、排他锁
+
+
+[[MySQL] 行级锁SELECT ... LOCK IN SHARE MODE 和 SELECT ... FOR UPDATE](https://blog.csdn.net/u012099869/article/details/52778728)
+
+### 当前读与快照读
+
+1. 快照读(snapshot read):一致非锁定读(一致读、快照读)
+
+简单的select操作(不包括 select ... lock in share mode, select ... for update)
+
+一致性读，也称为快照读，读取的是快照版本。普通的select是快照读。在事务中select的时候会生成一个快照，不同隔离级别生成快照的时机不一样：
+
+Read Committed隔离级别，在一个事务中每次读取都会重新生成一个快照，每次快照都是最新的，所以当前事务中每次select操作都可以看到其他已提交事务所做更改
+
+Repeatable Read隔离级别，在一个事务中的第一次select执行的时候生成快照，只有在当前事务中对数据的修改才会更新快照。只有第一次select之前其他已提交事务所做更改可以看到，第一次select之后其他事务提交的更改当前事务是看不到的
+一致性读，主要基于MVCC实现，多版本控制核心是数据快照，InnoDB通过undo log存储数据快照。
+
+使用MVCC优势是不加锁，并发度高，但是读取的数据不是实时数据。
+
+2.当前读(current read):锁定读
+
+select ... lock in share mode
+
+select ... for update
+
+insert
+
+update
+
+delete
+
+通过加record lock和gap lock间隙锁来实现，也就是next-key lock。使用next-key lock优势是获取实时数据，但是需要加锁。
+
+[Mysql-InnoDB 事务-一致性读(快照读)](https://blog.csdn.net/cxm19881208/article/details/79415726)
+
+[mysql/mariadb知识点总结（27）：一致性读，快照读](https://www.zsythink.net/archives/1436)
+
+[https://blog.csdn.net/silyvin/article/details/79280934](https://blog.csdn.net/silyvin/article/details/79280934)
+

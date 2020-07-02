@@ -36,6 +36,15 @@ CAP 首次在 ACM PODC 会议上作为猜想被提出，两年后被证明为定
 
 ### 负载均衡算法有哪些
 
+常见的负载均衡算法：
+
+- 轮询法（Round Robin） 
+- 加权轮询法（Weight Robin） 
+- 随机法（Random）
+- 加权随机法（Weight Random）
+- 最小连接法（Least Connections）
+- 源地址哈希法（Hash）
+
 ### 熔断是怎么实现的
 
 分布式 ID 生成器的解决方案总结
