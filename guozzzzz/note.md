@@ -178,7 +178,7 @@ PSYNC执行过程中比较重要的概念有3个：runid、offset（复制偏移
 
  
 ## redis数据结构
-###LString: SDS(简单动态字符串)
+### LString: SDS(简单动态字符串)
 
 字符串编码类型: <br>
 int编码: 保存的是可以用 long 类型表示的整数值  <br>
@@ -210,9 +210,9 @@ embstr少分配一次内存，更方便,但embstr也有明显的缺点：如要�
 ![avatar](picture/redis_string.png)
 64byte - 16byte -3byte -1byte = 44byte
  
-###List: quicklist(快速列表)-->ziplist压缩列表、linkedlist双端链表
+### List: quicklist(快速列表)-->ziplist压缩列表、linkedlist双端链表
 
-####压缩链表（ziplist）：
+#### 压缩链表（ziplist）：
 当一个列表中只包含少量列表项，且是小整数值或长度比较短的字符串时，redis就使用ziplist（压缩列表）来做列表键的底层实现  <br>
 每一个节点之间没有指针的指向，而是多个元素相邻 <br>
 
@@ -230,13 +230,13 @@ embstr少分配一次内存，更方便,但embstr也有明显的缺点：如要�
 ![avatar](picture/ziplist.png)
 
 
-#####双端列表（linkedlist）
+#### 双端列表（linkedlist）
 节点带有prev、next指针、head指针和tail指针，获取前置节点、后置节点、表头节点和表尾节点、获取长度的复杂度都是O(1) <br>
 当数据比较多的时候，双端列表的高效插入删除还是更好的选
 
 ![avatar](picture/linkedlist.png)
 
-#####快速列表（quicklist）
+#### 快速列表（quicklist）
 redis数据结构的选择，时间上、空间上都要达到极致，所以，他们将压缩列表和双端列表合二为一
 
 ![avatar](picture/quicklist.png)
@@ -249,8 +249,8 @@ redis数据结构的选择，时间上、空间上都要达到极致，所以，
     pop:ListFirst/listLast ---O(1)
     llen:listLength ---O(N)
 
-###Hash: ziplist压缩列表、hashtable哈希表
-#####hashtable哈希表
+### Hash: ziplist压缩列表、hashtable哈希表
+#### hashtable哈希表
 hashmap采用了链地址法的方法解决了哈希冲突的问题  <br>
 
 渐进式rehash <br>
@@ -265,26 +265,26 @@ redis还会在定时任务中对字典进行主动搬迁
 元素个数低于数组长度的10%
 
 
-####et: intset整数集合、hashtable哈希表
+### set: intset整数集合、hashtable哈希表
 当数据都是整数并且数量不多时，使用intset作为底层数据结构；当有除整数以外的数据或者数据量增多时，使用hashtable作为底层数据结构 <br>
-#####intset整数集合
+#### intset整数集合
 ntset底层实现为有序、无重复数的数组，intset的整数类型可以是16位的、32位的、64位的
 
 
-###Zset: ziplist压缩列表、skiplist跳表
-#####skiplist跳表
+### Zset: ziplist压缩列表、skiplist跳表
+#### skiplist跳表
 skiplist本质上也是一种查找结构，用于解决算法中的查找问题（Searching），即根据给定的key，快速查到它所在的位置（或者对应的value）
 
 ![avatar](picture/skiplist.png)
 
 
 
-##请求幂等性
+## 请求幂等性
 一个HTTP方法是幂等的，指的是同样的请求被执行一次与连续执行多次的效果是一样的，服务器的状态也是一样的  <br>
 GET，HEAD，PUT和DELETE 等方法都是幂等的，而 POST 方法不是
 
 
-##django WSGI
+## django WSGI
 WSGI: 描述web server与web application通信的规范  <br>
 uwsgi: 是uWSIG服务器的独占协议，用于定义传输信息的类型  <br>
 uWSIG: 是一个web服务器，实现了WSGI协议、uwsgi协议、http协议等  <br>
@@ -295,7 +295,7 @@ WSGI协议主要包括server和application两部分:  <br>
 WSGI server：负责从客户端接收请求，将request转发给application，将application返回的response返回给客户端  <br>
 WSGI application：接收server转发的request，处理请求，并将处理结果返回给server  <br>
 
-#####django WSGI application
+##### django WSGI application
 WSGI application应该实现为一个可调用对象，需要接收两个参数
 - 一个字典，该字典包含了客户端请求的信息以及其它信息，可以认为是请求上下文，一般叫做environment（environ、evn）
 - 一个用于发送HTTP响应状态（HTTP status）、响应头（HTTP headers）的回调函数
@@ -307,7 +307,7 @@ application流程包括：
 - 返回响应正文
 
 
-#####django WSGI Server
+##### django WSGI Server
 负责获取http请求，将请求传递给WSGI application，由application处理请求后返回response  <br>
 通过runserver运行django项目，在启动时都会调用下面的run方法，创建一个WSGIServer的实例，之后再调用server_forever()方法启动服务
 
@@ -317,14 +317,14 @@ application流程包括：
 下面表示WSGI server服务器处理流程中关键的类和方法
 ![avatar](picture/WSGI.png)
 
-#####django simple_server
+##### django simple_server
 django的simple_server.py模块实现了一个简单的HTTP服务器，整个流程：
 ![avatar](picture/simple_server.png)
 
 <https://www.jianshu.com/p/679dee0a4193>
 
 
-##django请求响应流程
+## django请求响应流程
 wsgi.py --> WSGIHandler --> base.BaseHandler(self.load_middleware\(django/core/handlers/base.py)) --> MiddlewareMixin(django/utils/deprecation.py) --> self.get_response(django/core/handlers/base.py)  <br>
 
 - 用户请求会到web服务器
@@ -345,10 +345,10 @@ wsgi.py --> WSGIHandler --> base.BaseHandler(self.load_middleware\(django/core/h
 正常情况下，子进程是通过父进程创建的，子进程在创建新的进程。 <br>
 子进程的结束和父进程的运行是一个异步过程,即父进程永远无法预测子进程到底什么时候结束。 当一个 进程完成它的工作终止之后，它的父进程需要调用wait()或者waitpid()系统调用取得子进程的终止状态  <br>
 
-####孤儿进程
+#### 孤儿进程
 一个父进程退出，而它的一个或多个子进程还在运行，那么那些子进程将成为孤儿进程。孤儿进程将被init进程(进程号为1)所收养，并由init进程对它们完成状态收集工作
 
-####僵尸进程
+#### 僵尸进程
 一个进程使用fork创建子进程，如果子进程退出，而父进程并没有调用wait或waitpid获取子进程的状态信息，那么子进程的进程描述符仍然保存在系统中
 
 问题及危害
@@ -360,19 +360,19 @@ unix提供了一种机制可以保证只要父进程想知道子进程结束时�
 <https://www.cnblogs.com/anker/p/3271773.html>
 
 
-##哈希索引和B树索引的区别
-###解决hash冲突的方法
+## 哈希索引和B树索引的区别
+### 解决hash冲突的方法
 - 开放地址法
 - 再哈希法
 - 链地址法
 - 建立公共溢出区
 
-####树索引
+### B树索引
 - B+树的非叶子节点只是存储key，占用空间非常小，因此每一层的节点能索引到的数据范围更加的广（每次io操作可以搜索更多的数据）
 - 叶子节点两两相连，符合磁盘预读特性，顺序读取，不是磁盘寻道加快速度（局部性原理与磁盘预读）
 - 支持范围查询，而且部分范围查询非常高效
 
-
+### 区别
 - hash索引结构检索效率非常高，索引的检索可以一次定位，不像B-Tree索引需要从根节点到枝节点，最后才能访问到叶节点，需要多次IO访问
 - hash索引仅仅能满足 '=', 'in' , '< = >' 查询（因为比较的时hash值），不能使用范围查询
 - hash索引不能利用部分索引键查询
