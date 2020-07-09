@@ -90,6 +90,10 @@ delete from t1 limit 3和delete from t1的区别: 只删除先找到的三行
 
 [https://blog.csdn.net/weixin_42570248/article/details/89099989?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase](https://blog.csdn.net/weixin_42570248/article/details/89099989?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
 
+
+### buffer pool
+[https://www.cnblogs.com/myseries/p/11307204.html](https://www.cnblogs.com/myseries/p/11307204.html)
+
 ### Changebuffer
 
  change buffer也是可以持久化的，change buffer在内存中有拷贝，也会被写入磁盘中。将change buffer中的操作应用到原数据页，得到最新结果的过程称为merge。触发持久化merge的操作：
@@ -106,7 +110,7 @@ delete from t1 limit 3和delete from t1的区别: 只删除先找到的三行
 
 以下几种情况开启 Change Buffer，会使得 MySQL 数据库明显提升：
 
-1、数据库大部分是非唯一索引
+1、数据库大部分是非唯一索引:对于唯一索引来说，所有的更新操作都要先判断这个操作是否违反唯一性约束。要判断表中是否存在这个数据，而这必须要将数据页读入内存才能判断，如果都已经读入到内存了，那直接更新内存会更快，就没必要使用change buffer了。
 
 2、业务是写多读少
 
@@ -143,13 +147,16 @@ b、对于Repeatable Read级别的：
 
 [MVCC--多版本并发控制机制](https://www.cnblogs.com/axing-articles/p/11415763.html)
 
-### Mysql 主从同步怎么搞的？分哪几个过程？如果有一台新机器要加到从机里，怎么个过程
 
-### Binlog 日志是 master 推的还是 salve 来拉的？
 
 ### explain
 
 condition,Using index,Using where)Extra(Using where,Using index,Using index 
+
+
+### ICP 索引下推
+
+[https://coderbee.net/index.php/db/20190718/1901](https://coderbee.net/index.php/db/20190718/1901)
 
 ### MySQL表锁和行锁
 
@@ -221,7 +228,7 @@ SELECT … FOR UPDATE：排他锁(X锁, exclusive locks)。如果事务对数据
 
 **注：普通 select 语句默认不加锁，而CUD操作默认加排他锁。**
 
-
+ 
 5、行锁和索引的关系：查询字段未加索引（主键索引、普通索引等）时，使用表锁.
 如果MySQL认为全表扫描效率更高，它就不会使用索引，这种情况下InnoDB将使用表锁，而不是行锁。
 
@@ -274,3 +281,50 @@ delete
 
 [https://blog.csdn.net/silyvin/article/details/79280934](https://blog.csdn.net/silyvin/article/details/79280934)
 
+### Mysql 主从同步怎么搞的？分哪几个过程？如果有一台新机器要加到从机里，怎么个过程
+
+mysql复制原理：
+
+（1）master服务器将数据的改变记录二进制binlog日志，当master上的数据发生改变时，则将其改变写入二进制日志中；
+
+（2）slave服务器会在一定时间间隔内对master二进制日志进行探测其是否发生改变，如果发生改变，则开始一个I/OThread请求master二进制事件
+
+（3）同时主节点为每个I/O线程启动一个dump线程，用于向其发送二进制事件，并保存至从节点本地的中继日志中，从节点将启动SQL线程从中继日志中读取二进制日志，在本地重放，使得其数据和主节点的保持一致，最后I/OThread和SQLThread将进入睡眠状态，等待下一次被唤醒。
+
+从库会生成两个线程,一个I/O线程,一个SQL线程;
+I/O线程会去请求主库的binlog,并将得到的binlog写到本地的relay-log(中继日志)文件中;
+主库会生成一个log dump线程,用来给从库I/O线程传binlog;
+SQL线程,会读取relay log文件中的日志,并解析成sql语句逐一执行;
+
+MySQL 主从复制模式
+
+异步模式（mysql async-mode）
+
+半同步模式(mysql semi-sync)
+
+全同步模式
+
+
+
+### MySQL是怎么保证高可用的
+
+主备延迟:
+
+与数据同步有关的时间点主要包括以下三个：
+
+主库A执行完成一个事务，写入binlog，我们把这个时刻记为T1;
+
+之后传给备库B，我们把备库B接收完这个binlog的时刻记为T2;
+
+备库B执行完成这个事务，我们把这个时刻记为T3。
+
+所谓主备延迟，就是同一个事务，在备库执行完成的时间和主库执行完成的时间之间的差值，也就是T3-T1。
+
+你可以在备库上执行show slave status命令，它的返回结果里面会显示seconds_behind_master，用于表示当前备库延迟了多少秒。
+
+你可以在备库上执行show slave status命令，它的返回结果里面会显示seconds_behind_master，用于表示当前备库延迟了多少秒。
+
+
+可靠性优先策略：系统存在不可写状态，时间受主备延迟影响
+
+可用性优先策略：可能出现数据不一致的情况。

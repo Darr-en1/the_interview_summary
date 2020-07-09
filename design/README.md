@@ -45,6 +45,8 @@ CAP 首次在 ACM PODC 会议上作为猜想被提出，两年后被证明为定
 - 最小连接法（Least Connections）
 - 源地址哈希法（Hash）
 
+[https://blog.csdn.net/sinat_36246371/article/details/78160448](https://blog.csdn.net/sinat_36246371/article/details/78160448)
+
 ### 熔断是怎么实现的
 
 分布式 ID 生成器的解决方案总结
