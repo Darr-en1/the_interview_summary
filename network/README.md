@@ -52,11 +52,43 @@ UDP:
 ### Tcp的握手与挥手
 SYN   Synchronize（同步）
 
+seq: sequence number（序列号）
+
 ACK (ACKnowledge Character） 
 
 RST   Reset   重连位~ 当RST=1的时候通知重新建立TCP连接
 
 FIN：Finall 
+
+
+TCP标志位
+TCP在其协议头中使用大量的标志位或者说1位（bit）布尔域来控制连接状态，一个包中有可以设置多个标志位。
+
+TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接：
+
+位码即TCP标志位，有6种标示：SYN(synchronous建立联机) ACK(acknowledgement 确认) PSH(push传送) FIN(finish结束) RST(reset重置) URG(urgent紧急)Sequence number(顺序号码) Acknowledge number(确认号码)
+我们常用的是以下三个标志位：
+
+SYN - 创建一个连接
+
+FIN - 终结一个连接
+
+ACK - 确认接收到的数据
+
+
+**syn攻击**
+在三次握手过程中，服务器发送SYN-ACK之后，收到客户端的ACK之前的TCP连接称为半连接(half-open connect).此时服务器处于Syn_RECV状态.当收到ACK后，服务器转入ESTABLISHED状态.
+
+Syn攻击就是 攻击客户端 在短时间内伪造大量不存在的IP地址，向服务器不断地发送syn包，服务器回复确认包，并等待客户的确认，由于源地址是不存在的，服务器需要不断的重发直 至超时，这些伪造的SYN包将长时间占用未连接队列，正常的SYN请求被丢弃，目标系统运行缓慢，严重者引起网络堵塞甚至系统瘫痪。
+
+Syn攻击是一个典型的DDOS攻击。检测SYN攻击非常的方便，当你在服务器上看到大量的半连接状态时，特别是源IP地址是随机的，基本上可以断定这是一次SYN攻击.在Linux下可以如下命令检测是否被Syn攻击
+
+netstat -n -p TCP | grep SYN_RECV
+
+一般较新的TCP/IP协议栈都对这一过程进行修正来防范Syn攻击，修改tcp协议实现。主要方法有SynAttackProtect保护机制、SYN cookies技术、增加最大半连接和缩短超时时间等.
+
+但是不能完全防范syn攻击。
+
 
 三次握手
 ![Three_way_Handshake.jpg](Three_way_Handshake.jpg)
@@ -91,6 +123,17 @@ MSL是Maximum Segment Lifetime,译为“报文最大生存时间”
 
 ### 滑动窗口
 
+滑动窗口
+
+TCP的滑动窗口是以字节为单位的。TCP利用滑动窗口协议来进行流量控制
+
+ARQ协议，即自动重传请求（Automatic Repeat-reQuest）
+
+ARQ包括停止等待ARQ协议和连续ARQ协议
+
+停止等待ARQ协议信道利用率太低，所以需要使用连续ARQ协议来进行改善。
+连续ARQ协议通常是结合滑动窗口协议来使用的。
+
 [https://mp.weixin.qq.com/s/Tc09ovdNacOtnMOMeRc_uA](https://mp.weixin.qq.com/s/Tc09ovdNacOtnMOMeRc_uA)
 
 ### OSI，TCP/IP，五层协议的体系结构，以及各层协议
@@ -110,6 +153,12 @@ TCP为了提供可靠传输：
 2. 其次，TCP采用了连续ARQ协议（回退N，Go-back-N；超时自动重传）来保证数据传输的正确性，使用滑动窗口协议来保证接方能够及时处理所接收到的数据，进行流量控制。
 3. 最后，TCP使用慢开始、拥塞避免、快重传和快恢复来进行拥塞控制，避免网络拥塞。
 
+[一文搞定 UDP 和 TCP 高频面试题！](https://zhuanlan.zhihu.com/p/108822858)
+
 [https://blog.csdn.net/guoweimelon/article/details/50878503](https://blog.csdn.net/guoweimelon/article/details/50878503)
 
 ### TCP粘包怎么解决
+
+### TCP半连接队列和全连接队列
+
+[TCP 半连接队列和全连接队列满了会发生什么？又该如何应对？](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247484569&idx=1&sn=1ca4daeb8043a957850ab7a8f4f1120e&chksm=f98e4033cef9c925f81e049b7bdc179123db36be01d25d339829958ca923707e82705cb4946f&scene=158#rd)

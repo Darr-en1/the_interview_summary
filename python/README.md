@@ -76,7 +76,9 @@ multiprocessing.Manager:分装了进程间通信的多个对象
 
 2.阻塞操作会导致整个线程被阻塞
 
-[https://www.cnblogs.com/fengf233/p/11548769.html](https://www.cnblogs.com/fengf233/p/11548769.html)
+[再议Python协程——从yield到asyncio](https://www.cnblogs.com/zingp/p/8678109.html#_label0)
+
+[python协程总结](https://www.cnblogs.com/fengf233/p/11548769.html)
 
 [https://blog.csdn.net/xfgryujk/article/details/80854750](https://blog.csdn.net/xfgryujk/article/details/80854750)
 

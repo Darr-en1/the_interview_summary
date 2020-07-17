@@ -184,8 +184,15 @@ table，function这样的对象的元数据信息（如表名，表的列，列�
 这时候kill可能未必管用，因为新的请求马上就来了。比较理想的机制是，在alter table语句里面设定等待时间，如果在这个指定的等待时间里面能够拿到MDL写锁最好，拿不到也不要阻塞后面的业务语句，先放弃。之后开发人员或者DBA再通过重试命令重复这个过程。
 
 Online DDL
+[MySQL InnoDB Online DDL学习](https://www.cnblogs.com/dbabd/p/10381942.html)
 
-InnoDB锁
+
+myisam 只支持表锁 : 读共享读锁，写锁
+
+当一个线程获取到表级写锁后，只能由该线程对表进行读写操作，别的线程必须等待该线程释放锁以后才能操作
+当一个线程获取到表级读锁后，该线程只能读取数据不能修改数据，其它线程也只能加读锁，不能加写锁
+
+InnoDB支持行锁和表锁，默认启用行锁:
 
 行锁的有两种锁模式：
 
@@ -280,6 +287,12 @@ delete
 [mysql/mariadb知识点总结（27）：一致性读，快照读](https://www.zsythink.net/archives/1436)
 
 [https://blog.csdn.net/silyvin/article/details/79280934](https://blog.csdn.net/silyvin/article/details/79280934)
+
+
+### mysql 索引加锁分析
+主要依据事务隔离级别，受否为索引，是否为唯一索引 分析
+
+[https://www.jianshu.com/p/13f5777966dd](https://www.jianshu.com/p/13f5777966dd)
 
 ### Mysql 主从同步怎么搞的？分哪几个过程？如果有一台新机器要加到从机里，怎么个过程
 
