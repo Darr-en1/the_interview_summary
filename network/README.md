@@ -162,3 +162,7 @@ TCP为了提供可靠传输：
 ### TCP半连接队列和全连接队列
 
 [TCP 半连接队列和全连接队列满了会发生什么？又该如何应对？](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247484569&idx=1&sn=1ca4daeb8043a957850ab7a8f4f1120e&chksm=f98e4033cef9c925f81e049b7bdc179123db36be01d25d339829958ca923707e82705cb4946f&scene=158#rd)
+
+### Websocket
+
+[记录关于websocket的原理和使用](https://vimiix.com/post/2018/04/02/python-websocket/)
