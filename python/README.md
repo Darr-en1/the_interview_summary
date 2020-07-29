@@ -98,3 +98,19 @@ multiprocessing.Manager:分装了进程间通信的多个对象
 [https://zhuanlan.zhihu.com/p/83251959](https://zhuanlan.zhihu.com/p/83251959)
 
 ### Mro
+
+### asyncio
+
+Asyncio.gather vs asyncio.wait
+
+区别的第一层区别:
+
+asyncio.gather 封装的 Task 全程黑盒，只告诉你协程结果。
+asyncio.wait 会返回封装的 Task (包含已完成和挂起的任务)，如果你关注协程执行结果你需要从对应 Task 实例里面用 result 方法自己拿。
+
+
+[深入理解asyncio(二)](https://www.dongwm.com/post/understand-asyncio-2/)
+
+### celery
+
+[分布式任务队列Celery入门与进阶](https://www.cnblogs.com/wdliu/p/9517535.html)
