@@ -167,7 +167,8 @@ MDL锁的全称为Meta data lock，是在MySQL中sql层实现的锁，从其名�
 它的作用主要是为了保护元数据的访问。而在MySQL中，元数据就是指如schema，
 table，function这样的对象的元数据信息（如表名，表的列，列的属性等等）。
 
-在MySQL 5.5版本中引入了MDL，**当对一个表做增删改查操作的时候，加MDL读锁**；**当要对表做结构变更操作的时候，加MDL写锁**。
+在MySQL 5.5版本中引入了MDL，**当对一个表做增删改查操作的时候，加MDL读锁**；
+**当要对表做结构变更操作的时候，加MDL写锁**。
 
 读锁之间不互斥，因此你可以有多个线程同时对一张表增删改查。
 
@@ -236,7 +237,25 @@ SELECT … FOR UPDATE：排他锁(X锁, exclusive locks)。如果事务对数据
 **注：普通 select 语句默认不加锁，而CUD操作默认加排他锁。**
 
  
-5、行锁和索引的关系：查询字段未加索引（主键索引、普通索引等）时，使用表锁.
+#### 总结
+索引操作(主键索引锁一行，普通索引锁多行)：
+
+前提:事务1 获取某行数据 lock in share mode:
+1. 事务1 既可以查看也可以更改(更改会默认加 for update),可以加 for update,重复加lock in share mode，
+更改或加 for update会将之前的lock in share mode 升级成 for update;
+2. 事务2 可以获取该行数据((数据快照读，通过MVCC)，也可以加 lock in share mode， 
+加 for update 阻塞。更新操作会被阻塞(更改会默认加 for update );
+3. 事务1 对该行数据进行更改(更改会默认加 for update )或加 for update,
+事务2 可以获取该行数据(修改前的数据快照读，通过MVCC)，但是加lock in share mode，for update 会阻塞;
+3. 事务2 对该行数据 加 lock in share mode,事务1 ，事务2 都 不能对该行进行更改 或则加 for update，只能查询。
+
+前提:事务1 获取某行数据 for update:
+1. 事务1 既可以查看也可以更改(更改会默认加 for update),可以加 lock in share mode,重复加 for update，锁级别依旧为for update;
+2. 事务2 可以获取该行数据((数据快照读，通过MVCC)，加 lock in share mode，for update都会阻塞。
+更新操作会被阻塞(更改会默认加 for update );
+
+
+行锁和索引的关系：查询字段未加索引（主键索引、普通索引等）时，使用表锁.
 如果MySQL认为全表扫描效率更高，它就不会使用索引，这种情况下InnoDB将使用表锁，而不是行锁。
 
 **注：InnoDB行级锁基于索引实现。**
