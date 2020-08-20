@@ -114,3 +114,9 @@ asyncio.wait 会返回封装的 Task (包含已完成和挂起的任务)，如�
 ### celery
 
 [分布式任务队列Celery入门与进阶](https://www.cnblogs.com/wdliu/p/9517535.html)
+
+### Django_ORM性能优化
+[Django ORM性能优化，数据存取优化](https://www.jianshu.com/p/aded5b2029f6)
+
+### Django运行方式及处理流程总结
+[Django运行方式及处理流程总结](https://segmentfault.com/a/1190000002399134)
