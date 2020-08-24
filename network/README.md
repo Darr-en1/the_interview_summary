@@ -19,7 +19,7 @@ ARP协议:IP地址获取MAC地址的一个网络层协议
 - 传输层：定义端口，确认主机上应用程序的身份，并将数据包交给对应的应用程序；
 - 应用层：定义数据格式，并按照对应的格式解读数据。
 
-[https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247483989&idx=1&sn=7e2ed852770743d3955ef9d5561fcef3&scene=21#wechat_redirect](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247483989&idx=1&sn=7e2ed852770743d3955ef9d5561fcef3&scene=21#wechat_redirect)
+[探究！一个数据包在网络中的心路历程](https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247483989&idx=1&sn=7e2ed852770743d3955ef9d5561fcef3&scene=21#wechat_redirect)
 
 [https://www.cnblogs.com/onepixel/p/7092302.html](https://www.cnblogs.com/onepixel/p/7092302.html)
 
@@ -45,9 +45,9 @@ UDP:
 - UDP 支持多播和广播。
 
 
-[https://blog.fundebug.com/2019/03/22/differences-of-tcp-and-udp/](https://blog.fundebug.com/2019/03/22/differences-of-tcp-and-udp/)
+[一文搞懂TCP与UDP的区别](https://blog.fundebug.com/2019/03/22/differences-of-tcp-and-udp/)
 
-[https://zhuanlan.zhihu.com/p/24860273](https://zhuanlan.zhihu.com/p/24860273)
+[TCP和UDP的区别](https://zhuanlan.zhihu.com/p/24860273)
 
 ### Tcp的握手与挥手
 SYN   Synchronize（同步）
@@ -166,3 +166,10 @@ TCP为了提供可靠传输：
 ### Websocket
 
 [记录关于websocket的原理和使用](https://vimiix.com/post/2018/04/02/python-websocket/)
+
+### Restful
+
+[深入理解什么是RESTful API](http://www.imooc.com/article/304756)
+
+### Linux后台进程管理
+[Linux后台进程管理以及ctrl+z（挂起）、ctrl+c（中断）、ctrl+\（退出）和ctrl+d（EOF）的区别](https://blog.csdn.net/u012787436/article/details/39722583)

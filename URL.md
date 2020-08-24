@@ -11,3 +11,5 @@
 [抖音、腾讯、阿里、美团春招服务端开发岗位硬核面试（完结）](https://juejin.im/post/5ef5284ce51d453483425da9?utm_source=gold_browser_extension#heading-71)
 
 [interview_python](https://github.com/taizilongxu/interview_python#python%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7)
+
+[百度、字节跳动等后台面经](https://mp.weixin.qq.com/s/BiaXzNw5rp69CPPNBRii3g)
