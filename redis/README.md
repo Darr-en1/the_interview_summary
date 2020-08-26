@@ -232,3 +232,92 @@ Redis的内存淘汰机制
 ### Redis6.0
 
 [https://www.cnblogs.com/mr-wuxiansheng/p/12884356.html](https://www.cnblogs.com/mr-wuxiansheng/p/12884356.html)
+
+### Redis Sentinel
+
+添加Sentinel
+
+移除Sentinel
+
+移除一个老的master或不可用的slave
+
+[Redis Sentinel--运维管理](https://blog.51cto.com/darrenmemos/2156538)
+
+#### 从节点优先
+
+Redis实例有个配置参数叫slave-priority。这个信息在Redis从节点实例的INFO输出中展示出来，并且Sentinel使用它来选择一个从节点在一次故障转移中：
+- 如果从节点的优先级被设置为0，这个从节点永远不会被提升为主节点。
+- Sentinel首选一个由更低（ lower）优先级的从节点。
+
+比如在当前主节点的同一个数据中心有一个从节点S1，并且有另外的从节点S2在另外的数据中心，可以将S1优先级设置为10，S2优先级设置为100，如果主节点挂掉了并且S1和S2都是可用的，S1将是首选的。
+
+
+#### SDOWN和ODOWN失败状态
+
+主观下线（Subjectively Down ）
+
+客观下线（Objectively Down ）
+
+Redis Sentine有两个不同概念的下线，一个被称为主观下线（Subjectively Down ）条件（SDOWN），是一个本地Sentinel实例下线条件。另一个被称为客观下线（Objectively Down ）条件（ODOWN），是当足够的Sentinels具有SDOWN条件就满足ODOWN，并且从其他的Sentinels使用SENTINEL is-master-down-by-addr命令得到反馈。
+
+从一个Sentinel的角度来看，满足一个SDOWN条件就是在指定的时间内对于PING请求不能收到有效的回复，这个时间在配置文件中是is-master-down-after-milliseconds参数。
+
+一个PING请求可接受的回复是下列之一：
+
+回复+PONG。
+回复 -LOADING错误。
+回复-MASTERDOWN错误。
+其他的回复（或根本没有回复）被认为是无效的。注意一个合理的主节点在INFO输出中通知他自己是一个从节点被认为是下线的。
+
+注意SDOWN需要在配置中整个的时间间隔都没有收到有效的回复，因此对于实例如果时间间隔是30000毫秒，并且我们每隔29秒收到有效的回复，这个实例就被认为在工作。
+
+SDOWN还不够触发故障转移：它仅仅意味着一个单独的Sentinel相信一个Redis实例不可达。要触发故障转移，必须达到ODOWN状态。
+
+从SDOWN转换到ODOWN，没有使用强一致性算法，而仅仅是gossip的形式：如果一个Sentinel在一个给定的时间范围内从足够的Sentinels 得到一个报告说一个主节点没有在工作，SDOWN被提升为ODOWN。如果这个确认稍候消失，这个标识也会清除。
+
+一个更加严格的授权是使用大多数需要为了真正的开始故障转移，但是在达到ODOWN状态之前不会触发故障转移。
+
+ODOWN条件只适用于主节点。对于其他类型的实例，Sentinel不需要采取行动，所以对于从节点和其他的sentinels来说ODOWN状态永远不可能达到，而仅仅只有SDOWN状态。
+
+然而SDOWN也有语义的影响，比如一个从节点在SDOWN状态不会被选举来提升来执行一个故障转移。
+
+#### Sentinels和从节点自动发现
+
+Sentinels和其他的Sentinels保持连接为了互相之间检查是否可达和交换消息。然而你不需要在每个运行的Sentinel 实例中配置其他的Sentinel地址列表，Sentinel使用Redis实例的发布/订阅能力来发现其他的监控相同的主节点和从节点的Sentinels。
+
+通过往名称为__sentinel__:hello的通道发送hello消息（hello messages）来实现这个特性。
+
+同样的，你不需要配置一个主节点关联的从节点的列表，Sentinel也会自动发现这个列表通过问询Redis：
+
+每隔两秒，每个Sentinel向每个监控的主节点和从节点的发布/订阅通道__sentinel__:hello来公布一个消息，宣布它自己的IP，端口，id。
+每个Sentinel都订阅每个主节点和从节点的发布/订阅通道__sentinel__:hello，寻找未知的sentinels。当新的sentinels被检测到，他们增加这个主节点的sentinels。
+Hello消息也包含主节点的全部配置信息，如果接收的Sentinel有一个更旧的配置，它会立即更新它的配置。
+在增加一个主节点的新的sentinel之前，Sentinel总是要检查是否已经有一个有相同的id、地址的sentinel。在这种情况下，所有匹配的sentinels被移除，新的被增加。
+
+#### 从节点选举和优先级
+
+当一个Sentinel实例准备执行故障转移，因为主节点在ODOWN状态下并且Sentinel从大多数已知的Sentinel实例中收到了授权开始故障转移，一个合适的从节点要被选举出来。
+
+从节点选举过程评估从节点的下列信息：
+
+与主节点断开的时间
+从节点优先级
+复制偏移处理
+运行ID
+一个从节点被发现从主节点断开超过主节点配置超时（down-after-milliseconds 选项）时间十倍以上，加上从正在执行故障转移的Sentinel的角度看主节点不可用的时间，将被认为是不合适的并且会被跳过。
+
+在更严格的条件下，一个从节点的INFO输出建议了从主节点断开超过：
+
+(down-after-milliseconds * 10) + milliseconds_since_master_is_in_SDOWN_state
+被认为是不可靠的并且会被无视。
+
+从节点选举只会考虑通过了上述测试的从节点，并根据上面的条件进行排序，以下列顺序：
+
+根据Redis实例中的redis.conf文件中配置的slave-priority进行排序，更低的优先级会被优先。
+如果优先级相同，检查复制偏移处理，从主节点收到更加新的数据的从节点会被选择。
+如果多个从节点有相同的优先级和数据偏移，执行进一步检查，选择有着更小运行ID的从节点。有一个更小的ID并不是具有正真的优点，但是对于从节点选举来说更确定，而不是随机选择一个从节点。
+如果有机器是首选，Redis主节点、从节点必须被配置一个slave-priority。否则，所有的实例都有一个默认的ID。
+
+一个Redis实例可以被配置指定slave-priority为0为了永远不被Sentinels 选择为新的主节点。然而一个这样配置的从节点会被Sentinels重新配置，为了在一次故障转移后复制新的主节点，唯一不同的是，它永远不会成为主节点。
+
+[Redis Sentinel 文档](http://ifeve.com/redis-sentinel/)
