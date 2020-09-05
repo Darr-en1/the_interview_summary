@@ -120,3 +120,16 @@ asyncio.wait 会返回封装的 Task (包含已完成和挂起的任务)，如�
 
 ### Django运行方式及处理流程总结
 [Django运行方式及处理流程总结](https://segmentfault.com/a/1190000002399134)
+
+### Flask路由原理
+
+调用逻辑为:
+
+```Flask.route -> Flask.add_url_rule -> Map.add -> Rule.bind```
+
+[路由原理](https://juejin.im/post/6844903895655776269)
+
+### Flask代理对象
+[全局变量](https://juejin.im/post/6844903920842588174)
+
+[Flask 上下文理解](https://jin-yang.github.io/post/flask-context.html)
