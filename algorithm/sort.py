@@ -27,18 +27,18 @@ def selection_sort(arr):
 
 def quick_sort(arr):
     def _quick_sort(arr, left, right):
-        # def partition(arr, left, right):
-        #     pivot = arr[left]
-        #     j = left
-        #     for i in range(left + 1, right + 1):
-        #         if arr[i] < pivot:
-        #             arr[j + 1], arr[i] = arr[i], arr[j + 1]
-        #             j += 1
-        #
-        #     arr[left], arr[j] = arr[j], arr[left]
-        #     return j
-
         def partition(arr, left, right):
+            pivot = arr[left]
+            j = left  # j 后侧的数据更大，j 及其左侧数据更小
+            for i in range(left + 1, right + 1):
+                if arr[i] < pivot:
+                    arr[j + 1], arr[i] = arr[i], arr[j + 1]
+                    j += 1
+
+            arr[left], arr[j] = arr[j], arr[left]
+            return j
+
+        def partition1(arr, left, right):
             pivot = left
             left = left + 1
             while left < right:
