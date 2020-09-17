@@ -90,6 +90,11 @@ netstat -n -p TCP | grep SYN_RECV
 但是不能完全防范syn攻击。
 
 
+
+半连接队列
+
+TIME_WAIT:time_wait状态是四次挥手中server向client发送FIN终止连接后进入的状态。
+
 三次握手
 ![Three_way_Handshake.jpg](Three_way_Handshake.jpg)
 
@@ -98,9 +103,9 @@ netstat -n -p TCP | grep SYN_RECV
 
 [为什么tcp是三次握手而不是两次握手？](https://zhuanlan.zhihu.com/p/51448333)
 
-[https://zhuanlan.zhihu.com/p/86426969](https://zhuanlan.zhihu.com/p/86426969)
+[面试官，不要再问我三次握手和四次挥手](https://zhuanlan.zhihu.com/p/86426969)
 
-[https://hit-alibaba.github.io/interview/basic/network/TCP.html](https://hit-alibaba.github.io/interview/basic/network/TCP.html)
+[TCP协议](https://hit-alibaba.github.io/interview/basic/network/TCP.html)
 
 ### Http与https的区别加密逻辑
 
