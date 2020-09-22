@@ -1,3 +1,6 @@
+from typing import List
+
+
 def bubble_sort(arr):
     for i in range(len(arr)):
         for j in range(len(arr) - 1 - i):
@@ -65,4 +68,27 @@ def quick_sort(arr):
 
 
 print(quick_sort([2, 5, 10, 7, 1, 3]))
+
+
 # print(list(range(10, -1, -1)))
+
+
+class Solution:
+    def quick_sort(self, arr: List[int]) -> List[int]:
+        # 二分法
+        def inner(start, end):
+            if start < end:
+
+                begin = start
+                tmp_re = arr[start]
+                for i in range(start + 1, end):
+                    if tmp_re > arr[i]:
+                        arr[begin + 1], arr[i] = arr[i], arr[begin + 1]
+                        begin += 1
+                arr[begin], arr[start] = arr[start], arr[begin]
+
+                inner(start, begin)
+                inner(begin + 1, end)
+
+        inner(0, len(arr))
+        return arr
