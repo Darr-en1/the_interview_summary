@@ -1,3 +1,4 @@
+import copy
 from typing import List
 
 
@@ -28,11 +29,50 @@ def selection_sort(arr):
     return arr
 
 
+def merge_sort(nums):
+    def merge(left, mid, right):
+        for i in range(left, right + 1):
+            temp[i] = nums[i]
+        i = k = left
+        j = mid + 1
+        while left <= i <= mid < j <= right:
+            if temp[i] < temp[j]:
+                nums[k] = temp[i]
+                i += 1
+            else:
+                nums[k] = temp[j]
+                j += 1
+            k += 1
+
+        while i <= mid:
+            nums[k] = temp[i]
+            k += 1
+            i += 1
+
+        while j <= right:
+            nums[k] = temp[j]
+            k += 1
+            j += 1
+
+    def sort(left, right):
+        if left < right:
+            mid = left + (right - left) // 2
+            sort(left, mid)
+            sort(mid + 1, right)
+            if nums[mid] <= nums[mid + 1]:  # 排序后 前后有序不需要merge
+                return
+            merge(left, mid, right)
+
+    temp = copy.copy(nums)
+    sort(0, len(nums) - 1)
+    return nums
+
+
 def quick_sort(arr):
     def _quick_sort(arr, left, right):
         def partition(arr, left, right):
             pivot = arr[left]
-            j = left  # j 后侧的数据更大，j 及其左侧数据更小
+            j = left
             for i in range(left + 1, right + 1):
                 if arr[i] < pivot:
                     arr[j + 1], arr[i] = arr[i], arr[j + 1]
@@ -92,3 +132,6 @@ class Solution:
 
         inner(0, len(arr))
         return arr
+
+
+print(merge_sort([2, 4, 3, 5, 1]))

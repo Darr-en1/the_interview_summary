@@ -17,6 +17,18 @@ MySQL的默认隔离级别就是Repeatable,Oracle postgresql 默认Read committe
 
 ### Binlog日志和redolog日志,两个日志的作用以及两阶段提交
 
+redolog是对记录修改之后的物理日志，物理日志就是说redolog保存的是某一行数据修改之后的值，比如把id=1这行的某个属性由1改成2，redolog记录的就是这个2.redolog是InnoDB引擎层的。
+
+相比于redolog，binlog是逻辑日志。其中一种形式是记录的原始sql语句，比如update t set c = c +1 where id = 1; binlog是数据库server层的。
+
+知识点： 
+- redo log , undo log , bin log  
+- crash safe
+- wal 机制
+- 两阶段提交
+
+[MySQL 的 crash-safe 原理解析](https://juejin.im/post/6844904167782236167)
+
 ### Mysql存储引擎及区别
 
 MyISAM  
