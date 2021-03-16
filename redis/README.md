@@ -14,7 +14,7 @@ redis的数据类型 8种
 
 查看key对应value的数据结构  `object encoding key_name`
 
-***Srring***
+***String***
 
 string长度不可超过512M
 
