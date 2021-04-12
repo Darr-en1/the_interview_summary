@@ -70,16 +70,6 @@ def merge_sort(nums):
 
 def quick_sort(arr):
     def _quick_sort(arr, left, right):
-        def partition(arr, left, right):
-            pivot = arr[left]
-            j = left
-            for i in range(left + 1, right + 1):
-                if arr[i] < pivot:
-                    arr[j + 1], arr[i] = arr[i], arr[j + 1]
-                    j += 1
-
-            arr[left], arr[j] = arr[j], arr[left]
-            return j
 
         def partition1(arr, left, right):
             pivot = left
