@@ -294,6 +294,17 @@ Sentinels和其他的Sentinels保持连接为了互相之间检查是否可达�
 Hello消息也包含主节点的全部配置信息，如果接收的Sentinel有一个更旧的配置，它会立即更新它的配置。
 在增加一个主节点的新的sentinel之前，Sentinel总是要检查是否已经有一个有相同的id、地址的sentinel。在这种情况下，所有匹配的sentinels被移除，新的被增加。
 
+
+#### 脑裂问题
+
+网络不可达导致出现多个master.
+
+
+redis-py 中 从Sentinel拿到真实的地址，是先连接到Sentinel进程，然后执行sentinel命令获取到master的地址;
+每次查询时并不需要执行discover_master和master_for，这些都会在连接的时候自动执行;
+发生主从切换时，客户端会通过超时或者ReadOnlyError自动断开连接，然后重新连接的时候会通过再次获取master地址连接到新的master。
+[redis-py里的Sentinel到底是如何工作的](https://huangzhw.github.io/2019/03/23/how-redis-py-sentinel-work/)
+
 #### 从节点选举和优先级
 
 当一个Sentinel实例准备执行故障转移，因为主节点在ODOWN状态下并且Sentinel从大多数已知的Sentinel实例中收到了授权开始故障转移，一个合适的从节点要被选举出来。
