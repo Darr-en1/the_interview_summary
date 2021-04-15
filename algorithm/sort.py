@@ -71,6 +71,17 @@ def merge_sort(nums):
 def quick_sort(arr):
     def _quick_sort(arr, left, right):
 
+        def partition(arr, left, right):
+            pivot = arr[left]
+            j = left
+            for i in range(left + 1, right + 1):
+                if arr[i] < pivot:
+                    arr[j + 1], arr[i] = arr[i], arr[j + 1]
+                    j += 1
+
+            arr[left], arr[j] = arr[j], arr[left]
+            return j
+
         def partition1(arr, left, right):
             pivot = left
             left = left + 1
@@ -99,29 +110,6 @@ def quick_sort(arr):
 
 print(quick_sort([2, 5, 10, 7, 1, 3]))
 
-
-# print(list(range(10, -1, -1)))
-
-
-class Solution:
-    def quick_sort(self, arr: List[int]) -> List[int]:
-        # 二分法
-        def inner(start, end):
-            if start < end:
-
-                begin = start
-                tmp_re = arr[start]
-                for i in range(start + 1, end):
-                    if tmp_re > arr[i]:
-                        arr[begin + 1], arr[i] = arr[i], arr[begin + 1]
-                        begin += 1
-                arr[begin], arr[start] = arr[start], arr[begin]
-
-                inner(start, begin)
-                inner(begin + 1, end)
-
-        inner(0, len(arr))
-        return arr
 
 
 print(merge_sort([2, 4, 3, 5, 1]))
