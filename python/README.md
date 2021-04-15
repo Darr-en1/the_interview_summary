@@ -4,8 +4,6 @@
 
 [https://blog.csdn.net/u013007900/article/details/89016375](https://blog.csdn.net/u013007900/article/details/89016375)
 
-[https://blog.csdn.net/daaikuaichuan/article/details/82951084?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase](https://blog.csdn.net/daaikuaichuan/article/details/82951084?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase)
-
 ### 进程间通讯方法
 
 multiprocessing.Pipe:适用于两个进程之间，性能高于Queue
@@ -31,13 +29,13 @@ multiprocessing.Manager:分装了进程间通信的多个对象
 
 对象引用导致的内存不能回收
 
-[https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p23_managing_memory_in_cyclic_data_structures.html](https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p23_managing_memory_in_cyclic_data_structures.html)
+[循环引用数据结构的内存管理](https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p23_managing_memory_in_cyclic_data_structures.html)
 
 包引入问题
 
-[https://hustyichi.github.io/2018/10/30/circular-import/](https://hustyichi.github.io/2018/10/30/circular-import/)
+[python中的循环引用](https://hustyichi.github.io/2018/10/30/circular-import/)
 
-[https://www.jianshu.com/p/a1e91cc53b07](https://www.jianshu.com/p/a1e91cc53b07)
+[python解决循环引用问题](https://www.jianshu.com/p/a1e91cc53b07)
 
 
 ### 深浅拷贝
@@ -46,7 +44,7 @@ multiprocessing.Manager:分装了进程间通信的多个对象
 
 ### 协程的原理
 
-协程
+协程：具备多个入口的函数，也可以暂停的函数，可以向暂停的地方传入值
 
 1.协程是一种轻量级的用户态线程
 
@@ -123,7 +121,15 @@ asyncio.wait 会返回封装的 Task (包含已完成和挂起的任务)，如�
 
 ### Flask路由原理
 
-调用逻辑为:
+在Flask中是使用@app.route这个装饰器来实现url和方法之间的映射的。
+
+route装饰器其实就是调用了add_url_rule，
+
+self.url_map将 rule通过Rule对象实例化加入到Map中
+
+将试图函数 和视图函数名称加入到app.view_functions（dict结构）
+
+
 
 ```Flask.route -> Flask.add_url_rule -> Map.add -> Rule.bind```
 
@@ -133,3 +139,13 @@ asyncio.wait 会返回封装的 Task (包含已完成和挂起的任务)，如�
 [全局变量](https://juejin.im/post/6844903920842588174)
 
 [Flask 上下文理解](https://jin-yang.github.io/post/flask-context.html)
+
+[flask 源码解析](https://cizixs.com/2017/01/11/flask-insight-start-process/)
+
+### Python异步编程
+[Python异步编程](https://mp.weixin.qq.com/s/H-0pd3NcAJDbUckNi0-IEw)
+
+
+[高级编程](https://www.cnblogs.com/wry789/p/13710444.html)
+
+[高级编程](https://www.cnblogs.com/crazymagic/articles/10066437.html)
