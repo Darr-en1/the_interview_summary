@@ -159,7 +159,8 @@ b、对于Repeatable Read级别的：
 
 [MVCC--多版本并发控制机制](https://www.cnblogs.com/axing-articles/p/11415763.html)
 
-
+# redo log buffer
+[redo log buffer中的缓冲日志，什么时候可以写入磁盘？](https://blog.csdn.net/qq_37286668/article/details/111276385?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.baidujs&dist_request_id=&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.baidujs)
 
 ### explain
 
