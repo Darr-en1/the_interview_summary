@@ -1,3 +1,6 @@
+### python版本
+[你应该知道的Python3.6、3.7、3.8新特性](https://www.liujiangblog.com/blog/51/)
+
 ### 协程和线程的区别
 
 进程线程id 都唯一
@@ -13,6 +16,8 @@ multiprocessing.Queue:可用于进程间通信,但在进程池中失效
 multiprocessing.Manager:分装了进程间通信的多个对象
 
 ### Python装饰器,装饰器传参
+
+装饰器就是闭包的实现
 
 [https://darr-en1.github.io/2020/01/16/1/](https://darr-en1.github.io/2020/01/16/1/)
 
